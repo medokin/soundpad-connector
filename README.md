@@ -10,13 +10,17 @@
 
   * [Installation](#installation)
   * [QuickStart](#quickstart)
+  * [Examples](#examples)
   * [Limitations](#limitations)
   * [Contributing](#contributing)
   * [License](#license)
   * [Special thanks](#special-thanks)
 
 ## Installation
-TODO
+Get the NuGet package from [https://www.nuget.org/packages/SoundpadConnector](https://www.nuget.org/packages/SoundpadConnector) or install via NuGet console:
+```bash
+Install-Package SoundpadConnector
+```
 
 ## QuickStart
 ```csharp
@@ -52,6 +56,9 @@ namespace Examples {
 }
 
 ```
+
+## Examples
+Browse the [Examples](examples).
 
 ## Limitations
 SoundpadConnector does **not work** with Soundpad's **Demo** version.
