@@ -1,7 +1,5 @@
 <h1 align="center">
-  <br>
    <img src="SoundpadConnectorLogo.png" alt="Logo Soundpad Connector" title="Logo Soundpad Connector" />
-  <br>
 </h1>
 
 <p align="center">
@@ -12,6 +10,7 @@
 
   * [Installation](#installation)
   * [QuickStart](#quickstart)
+  * [Limitations](#limitations)
   * [Contributing](#contributing)
   * [License](#license)
   * [Special thanks](#special-thanks)
@@ -53,6 +52,10 @@ namespace Examples {
 }
 
 ```
+
+## Limitations
+SoundpadConnector does **not work** with Soundpad's **Demo** version.
+
 
 ## Contributing
 You may contribute in several ways like creating new features, fixing bugs, improving documentation and examples
