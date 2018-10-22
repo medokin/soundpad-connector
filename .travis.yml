@@ -1,2 +1,4 @@
 os: windows
+language: csharp
+solution: SoundpadConnector.sln
 script: msbuild src/SoundpadConnector.sln /p:Configuration=Release
