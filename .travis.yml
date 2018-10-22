@@ -1,0 +1,2 @@
+os: windows
+script: msbuild src/SoundpadConnector.sln /p:Configuration=Release

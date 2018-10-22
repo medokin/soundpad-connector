@@ -50,10 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\SoundpadConnector\SoundpadConnector.csproj">
-      <Project>{bf0f0cf0-08aa-45b1-a889-1d681ba728ad}</Project>
-      <Name>SoundpadConnector</Name>
-    </ProjectReference>
+    <PackageReference Include="SoundpadConnector">
+      <Version>1.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
