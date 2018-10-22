@@ -2,7 +2,7 @@
 using SoundpadConnector.Response;
 
 namespace SoundpadConnector {
-    public partial class SoundpadConnector {
+    public partial class Soundpad {
         public async Task<NoContentResponse> PlaySound(int index) {
             return await Send<NoContentResponse>($"DoPlaySound({index})");
         }

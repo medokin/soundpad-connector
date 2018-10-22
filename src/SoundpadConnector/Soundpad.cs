@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SoundpadConnector.Response;
 
 namespace SoundpadConnector {
-    public partial class SoundpadConnector : IDisposable {
+    public partial class Soundpad : IDisposable {
         private const string PipeName = "sp_remote_control";
 
         private readonly NamedPipeClientStream _pipe;
@@ -38,7 +38,7 @@ namespace SoundpadConnector {
         /// </summary>
         public ConnectionStatus ConnectionStatus = ConnectionStatus.Disconnected;
 
-        public SoundpadConnector() {
+        public Soundpad() {
             Connected += OnConnected;
             Disconnected += OnDisconnected;
             Connecting += OnConnecting;
