@@ -1,5 +1,7 @@
-- name: Articles
-  href: articles/
 - name: Api Documentation
   href: api/
   homepage: api/index.md
+
+- name: View on Github
+  href: https://github.com/medokin/soundpad-connector
+
