@@ -137,11 +137,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs.yml",
+      "source_relative_path": "api/SoundpadConnector.Soundpad.OnDisconnectedEventArgs.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs.html",
-          "hash": "uHo3F0dV5m2kwlMHdiZZjw=="
+          "relative_path": "api/SoundpadConnector.Soundpad.OnDisconnectedEventArgs.html",
+          "hash": "m4GCgiteJow+RZ4XF3Dmpw=="
         }
       },
       "is_incremental": true,
@@ -149,11 +149,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SoundpadConnector.SoundpadConnector.yml",
+      "source_relative_path": "api/SoundpadConnector.Soundpad.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SoundpadConnector.SoundpadConnector.html",
-          "hash": "2m5LIk6aya+54/AtppZSCg=="
+          "relative_path": "api/SoundpadConnector.Soundpad.html",
+          "hash": "WXgZqT0zd7a/j4flMBlQqw=="
         }
       },
       "is_incremental": true,
@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.html",
-          "hash": "UADJ+5eLDVNcSAxI4ZSs2g=="
+          "hash": "Angb89Z9iWukkgBB0lOhLQ=="
         }
       },
       "is_incremental": true,
@@ -225,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "z1/qWo4Lq2QOT7Muz5+3aA=="
+          "hash": "XtlSgVxyGrOF7qAD8x0FnQ=="
         }
       },
       "is_incremental": false,
@@ -256,15 +256,26 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "images/SoundpadConnectorLogo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/SoundpadConnectorLogo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "c86kizccx0uaS6UhVDWOww=="
+          "hash": "2kB/UlhCavXxj2hL2+S3fw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -273,7 +284,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "k+/dkjFuwAVS32HduMpmBw=="
+          "hash": "9wiCRY4LuXKdEl8rOjjSQw=="
         }
       },
       "is_incremental": false,
@@ -292,11 +303,16 @@
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         },
         "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build"
         }

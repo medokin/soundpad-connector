@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>This is the HOMEPAGE. </title>
+    <title>Table of contents </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="This is the HOMEPAGE. ">
+    <meta name="title" content="Table of contents ">
     <meta name="generator" content="docfx 2.40.0.0">
     
     <link rel="shortcut icon" href="favicon.ico">
@@ -60,13 +60,125 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="this-is-the-homepage">This is the <strong>HOMEPAGE</strong>.</h1>
 
-<p>Refer to <a href="http://daringfireball.net/projects/markdown/">Markdown</a> for how to write markdown files.</p>
-<h2 id="quick-start-notes">Quick Start Notes:</h2>
+<img src="images/SoundpadConnectorLogo.png" alt="Logo SoundpadConnector .NET" title="SoundpadConnector .NET">
+<br>
+<p>SoundpadConnector provides an .NET API to programmatically interact with a local <a href="https://store.steampowered.com/app/629520/Soundpad/">Soundpad</a> instance.</p>
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#quickstart">QuickStart</a></li>
+<li><a href="#documentation">Documentation</a>
+<ul>
+<li><a href="#api-docs">API docs</a></li>
+<li><a href="#build-the-docs">Build the docs</a></li>
+</ul>
+</li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#limitations">Limitations</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#special-thanks">Special thanks</a></li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<p>This library is build on .NET Standard 2.0. Following plattforms are <a href="https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support">supported</a>:</p>
+<ul>
+<li>.NET Core 2.0 or higher</li>
+<li>.NET Framework 4.6.1 or higher</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Get the NuGet package <a href="https://www.nuget.org/packages/SoundpadConnector">SoundpadConnector</a> or install via NuGet console:</p>
+<pre><code class="lang-bash">PM&gt; Install-Package SoundpadConnector
+</code></pre>
+<h2 id="quickstart">QuickStart</h2>
+<pre><code class="lang-csharp">using System;
+using SoundpadConnector;
+
+namespace Examples {
+    class Program {
+        public static Soundpad Soundpad;
+
+        static void Main(string[] args)
+        {
+            Soundpad = new Soundpad();
+            Soundpad.StatusChanged += SoundpadOnStatusChanged;
+
+            // Note that the API is asynchronous. Make sure that Soundpad is connected before executing commands.
+            Soundpad.ConnectAsync();
+
+            Console.ReadLine();
+
+        }
+
+        private static void SoundpadOnStatusChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(Soundpad.ConnectionStatus);
+
+            if (Soundpad.ConnectionStatus == ConnectionStatus.Connected)
+            {
+                Soundpad.PlaySound(1);              
+            }
+        }
+    }
+}
+
+</code></pre>
+<h2 id="documentation">Documentation</h2>
+<h3 id="api-docs">Api docs</h3>
+<p>Read the <a href="https://medokin.github.io/soundpad-connector/api/index.html">Docs</a> online.
+This is still work-in-progress!</p>
+<h3 id="build-the-docs">Build the docs</h3>
 <ol>
-<li>Add images to the <em>images</em> folder if the file is referencing an image.</li>
+<li>Install <a href="https://chocolatey.org/">Chocolatey</a></li>
+<li>Install <a href="">Docfx</a> via <a href="https://chocolatey.org/">Chocolatey</a> <code>choco install docfx -y</code></li>
+<li>Run <code>docfx docfx/docfx</code> in project root</li>
+<li>Browse the output in <code>/docs</code></li>
 </ol>
+<h2 id="examples">Examples</h2>
+<p>Browse the <a href="https://github.com/medokin/soundpad-connector/tree/master/examples">Examples</a>.</p>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>SoundpadConnector does <strong>not work</strong> with Soundpad's <strong>Demo</strong> version.</li>
+<li>UWP is not supported. The sandbox refuses pipe connections.</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="unexpected-result-when-performing-multiple-calls">Unexpected result when performing multiple calls?</h3>
+<p>Soundpad calls are not transactional. You may get a response before the action happened in Soundpad. For example:</p>
+<pre><code class="lang-csharp">var countResult = await soundpad.GetSoundFileCount();
+Console.WriteLine(countResult.Value); // 9
+
+await soundpad.AddSound(newSoundPath);
+
+var newCountResult = await soundpad.GetSoundFileCount();
+Console.WriteLine(newCountResult.Value); // 9 again, but we're expecting 10, right?
+</code></pre>
+<p>You can wait a certain amount of time between the calls, but that wont be safe eighter and makes you app slow.
+Another way is to loop until the value changes:</p>
+<pre><code class="lang-csharp">var countResult = await soundpad.GetSoundFileCount();
+Console.WriteLine(countResult.Value); // 9
+
+await soundpad.AddSound(newSoundPath);
+
+while(true) {
+    var newCountResult = await soundpad.GetSoundFileCount();
+    
+    if(newCountResult.Value == countResult.Value) {
+        Console.WriteLine(newCountResult.Value); // 10
+        break;
+    }
+}
+</code></pre>
+<h2 id="contributing">Contributing</h2>
+<p>You may contribute in several ways like creating new features, fixing bugs, improving documentation and examples
+or translating any document here to your language. Read our <a href="https://github.com/medokin/soundpad-connector/blob/master/CODE_OF_CONDUCT.md">Code of Conduct</a>.</p>
+<h2 id="license">License</h2>
+<p><a href="https://github.com/medokin/soundpad-connector/blob/master/LICENSE">MIT</a> - Nikodem Jaworski - 2018</p>
+<h2 id="special-thanks">Special thanks</h2>
+<ul>
+<li><a href="https://leppsoft.com/soundpad/de/">Leppsoft</a> - The Company behind Soundpad</li>
+</ul>
 </article>
           </div>
           

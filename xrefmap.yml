@@ -290,616 +290,616 @@ references:
   isSpec: "True"
   fullName: SoundpadConnector.Response.TextResponse.Parse
   nameWithType: TextResponse.Parse
-- uid: SoundpadConnector.SoundpadConnector
-  name: SoundpadConnector
-  href: api/SoundpadConnector.SoundpadConnector.html
-  commentId: T:SoundpadConnector.SoundpadConnector
-  fullName: SoundpadConnector.SoundpadConnector
-  nameWithType: SoundpadConnector
-- uid: SoundpadConnector.SoundpadConnector.#ctor
-  name: SoundpadConnector()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector__ctor
-  commentId: M:SoundpadConnector.SoundpadConnector.#ctor
-  fullName: SoundpadConnector.SoundpadConnector.SoundpadConnector()
-  nameWithType: SoundpadConnector.SoundpadConnector()
-- uid: SoundpadConnector.SoundpadConnector.#ctor*
-  name: SoundpadConnector
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector__ctor_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.#ctor
+- uid: SoundpadConnector.Soundpad
+  name: Soundpad
+  href: api/SoundpadConnector.Soundpad.html
+  commentId: T:SoundpadConnector.Soundpad
+  fullName: SoundpadConnector.Soundpad
+  nameWithType: Soundpad
+- uid: SoundpadConnector.Soundpad.#ctor
+  name: Soundpad()
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad__ctor
+  commentId: M:SoundpadConnector.Soundpad.#ctor
+  fullName: SoundpadConnector.Soundpad.Soundpad()
+  nameWithType: Soundpad.Soundpad()
+- uid: SoundpadConnector.Soundpad.#ctor*
+  name: Soundpad
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad__ctor_
+  commentId: Overload:SoundpadConnector.Soundpad.#ctor
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.SoundpadConnector
-  nameWithType: SoundpadConnector.SoundpadConnector
-- uid: SoundpadConnector.SoundpadConnector.AddSound(System.String)
+  fullName: SoundpadConnector.Soundpad.Soundpad
+  nameWithType: Soundpad.Soundpad
+- uid: SoundpadConnector.Soundpad.AddSound(System.String)
   name: AddSound(String)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_AddSound_System_String_
-  commentId: M:SoundpadConnector.SoundpadConnector.AddSound(System.String)
-  fullName: SoundpadConnector.SoundpadConnector.AddSound(System.String)
-  nameWithType: SoundpadConnector.AddSound(String)
-- uid: SoundpadConnector.SoundpadConnector.AddSound(System.String,System.Int32)
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_AddSound_System_String_
+  commentId: M:SoundpadConnector.Soundpad.AddSound(System.String)
+  fullName: SoundpadConnector.Soundpad.AddSound(System.String)
+  nameWithType: Soundpad.AddSound(String)
+- uid: SoundpadConnector.Soundpad.AddSound(System.String,System.Int32)
   name: AddSound(String, Int32)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_AddSound_System_String_System_Int32_
-  commentId: M:SoundpadConnector.SoundpadConnector.AddSound(System.String,System.Int32)
-  fullName: SoundpadConnector.SoundpadConnector.AddSound(System.String, System.Int32)
-  nameWithType: SoundpadConnector.AddSound(String, Int32)
-- uid: SoundpadConnector.SoundpadConnector.AddSound*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_AddSound_System_String_System_Int32_
+  commentId: M:SoundpadConnector.Soundpad.AddSound(System.String,System.Int32)
+  fullName: SoundpadConnector.Soundpad.AddSound(System.String, System.Int32)
+  nameWithType: Soundpad.AddSound(String, Int32)
+- uid: SoundpadConnector.Soundpad.AddSound*
   name: AddSound
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_AddSound_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.AddSound
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_AddSound_
+  commentId: Overload:SoundpadConnector.Soundpad.AddSound
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.AddSound
-  nameWithType: SoundpadConnector.AddSound
-- uid: SoundpadConnector.SoundpadConnector.AutoReconnect
+  fullName: SoundpadConnector.Soundpad.AddSound
+  nameWithType: Soundpad.AddSound
+- uid: SoundpadConnector.Soundpad.AutoReconnect
   name: AutoReconnect
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_AutoReconnect
-  commentId: F:SoundpadConnector.SoundpadConnector.AutoReconnect
-  fullName: SoundpadConnector.SoundpadConnector.AutoReconnect
-  nameWithType: SoundpadConnector.AutoReconnect
-- uid: SoundpadConnector.SoundpadConnector.ConnectAsync
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_AutoReconnect
+  commentId: F:SoundpadConnector.Soundpad.AutoReconnect
+  fullName: SoundpadConnector.Soundpad.AutoReconnect
+  nameWithType: Soundpad.AutoReconnect
+- uid: SoundpadConnector.Soundpad.ConnectAsync
   name: ConnectAsync()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_ConnectAsync
-  commentId: M:SoundpadConnector.SoundpadConnector.ConnectAsync
-  fullName: SoundpadConnector.SoundpadConnector.ConnectAsync()
-  nameWithType: SoundpadConnector.ConnectAsync()
-- uid: SoundpadConnector.SoundpadConnector.ConnectAsync*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ConnectAsync
+  commentId: M:SoundpadConnector.Soundpad.ConnectAsync
+  fullName: SoundpadConnector.Soundpad.ConnectAsync()
+  nameWithType: Soundpad.ConnectAsync()
+- uid: SoundpadConnector.Soundpad.ConnectAsync*
   name: ConnectAsync
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_ConnectAsync_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.ConnectAsync
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ConnectAsync_
+  commentId: Overload:SoundpadConnector.Soundpad.ConnectAsync
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.ConnectAsync
-  nameWithType: SoundpadConnector.ConnectAsync
-- uid: SoundpadConnector.SoundpadConnector.Connected
+  fullName: SoundpadConnector.Soundpad.ConnectAsync
+  nameWithType: Soundpad.ConnectAsync
+- uid: SoundpadConnector.Soundpad.Connected
   name: Connected
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Connected
-  commentId: E:SoundpadConnector.SoundpadConnector.Connected
-  fullName: SoundpadConnector.SoundpadConnector.Connected
-  nameWithType: SoundpadConnector.Connected
-- uid: SoundpadConnector.SoundpadConnector.Connecting
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Connected
+  commentId: E:SoundpadConnector.Soundpad.Connected
+  fullName: SoundpadConnector.Soundpad.Connected
+  nameWithType: Soundpad.Connected
+- uid: SoundpadConnector.Soundpad.Connecting
   name: Connecting
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Connecting
-  commentId: E:SoundpadConnector.SoundpadConnector.Connecting
-  fullName: SoundpadConnector.SoundpadConnector.Connecting
-  nameWithType: SoundpadConnector.Connecting
-- uid: SoundpadConnector.SoundpadConnector.ConnectionStatus
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Connecting
+  commentId: E:SoundpadConnector.Soundpad.Connecting
+  fullName: SoundpadConnector.Soundpad.Connecting
+  nameWithType: Soundpad.Connecting
+- uid: SoundpadConnector.Soundpad.ConnectionStatus
   name: ConnectionStatus
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_ConnectionStatus
-  commentId: F:SoundpadConnector.SoundpadConnector.ConnectionStatus
-  fullName: SoundpadConnector.SoundpadConnector.ConnectionStatus
-  nameWithType: SoundpadConnector.ConnectionStatus
-- uid: SoundpadConnector.SoundpadConnector.ConnectionTimeout
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ConnectionStatus
+  commentId: F:SoundpadConnector.Soundpad.ConnectionStatus
+  fullName: SoundpadConnector.Soundpad.ConnectionStatus
+  nameWithType: Soundpad.ConnectionStatus
+- uid: SoundpadConnector.Soundpad.ConnectionTimeout
   name: ConnectionTimeout
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_ConnectionTimeout
-  commentId: F:SoundpadConnector.SoundpadConnector.ConnectionTimeout
-  fullName: SoundpadConnector.SoundpadConnector.ConnectionTimeout
-  nameWithType: SoundpadConnector.ConnectionTimeout
-- uid: SoundpadConnector.SoundpadConnector.Disconnect
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ConnectionTimeout
+  commentId: F:SoundpadConnector.Soundpad.ConnectionTimeout
+  fullName: SoundpadConnector.Soundpad.ConnectionTimeout
+  nameWithType: Soundpad.ConnectionTimeout
+- uid: SoundpadConnector.Soundpad.Disconnect
   name: Disconnect()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Disconnect
-  commentId: M:SoundpadConnector.SoundpadConnector.Disconnect
-  fullName: SoundpadConnector.SoundpadConnector.Disconnect()
-  nameWithType: SoundpadConnector.Disconnect()
-- uid: SoundpadConnector.SoundpadConnector.Disconnect*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Disconnect
+  commentId: M:SoundpadConnector.Soundpad.Disconnect
+  fullName: SoundpadConnector.Soundpad.Disconnect()
+  nameWithType: Soundpad.Disconnect()
+- uid: SoundpadConnector.Soundpad.Disconnect*
   name: Disconnect
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Disconnect_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.Disconnect
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Disconnect_
+  commentId: Overload:SoundpadConnector.Soundpad.Disconnect
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.Disconnect
-  nameWithType: SoundpadConnector.Disconnect
-- uid: SoundpadConnector.SoundpadConnector.Disconnected
+  fullName: SoundpadConnector.Soundpad.Disconnect
+  nameWithType: Soundpad.Disconnect
+- uid: SoundpadConnector.Soundpad.Disconnected
   name: Disconnected
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Disconnected
-  commentId: E:SoundpadConnector.SoundpadConnector.Disconnected
-  fullName: SoundpadConnector.SoundpadConnector.Disconnected
-  nameWithType: SoundpadConnector.Disconnected
-- uid: SoundpadConnector.SoundpadConnector.Dispose
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Disconnected
+  commentId: E:SoundpadConnector.Soundpad.Disconnected
+  fullName: SoundpadConnector.Soundpad.Disconnected
+  nameWithType: Soundpad.Disconnected
+- uid: SoundpadConnector.Soundpad.Dispose
   name: Dispose()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Dispose
-  commentId: M:SoundpadConnector.SoundpadConnector.Dispose
-  fullName: SoundpadConnector.SoundpadConnector.Dispose()
-  nameWithType: SoundpadConnector.Dispose()
-- uid: SoundpadConnector.SoundpadConnector.Dispose*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Dispose
+  commentId: M:SoundpadConnector.Soundpad.Dispose
+  fullName: SoundpadConnector.Soundpad.Dispose()
+  nameWithType: Soundpad.Dispose()
+- uid: SoundpadConnector.Soundpad.Dispose*
   name: Dispose
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Dispose_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.Dispose
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Dispose_
+  commentId: Overload:SoundpadConnector.Soundpad.Dispose
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.Dispose
-  nameWithType: SoundpadConnector.Dispose
-- uid: SoundpadConnector.SoundpadConnector.DoSelectIndex(System.Int32)
+  fullName: SoundpadConnector.Soundpad.Dispose
+  nameWithType: Soundpad.Dispose
+- uid: SoundpadConnector.Soundpad.DoSelectIndex(System.Int32)
   name: DoSelectIndex(Int32)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_DoSelectIndex_System_Int32_
-  commentId: M:SoundpadConnector.SoundpadConnector.DoSelectIndex(System.Int32)
-  fullName: SoundpadConnector.SoundpadConnector.DoSelectIndex(System.Int32)
-  nameWithType: SoundpadConnector.DoSelectIndex(Int32)
-- uid: SoundpadConnector.SoundpadConnector.DoSelectIndex*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_DoSelectIndex_System_Int32_
+  commentId: M:SoundpadConnector.Soundpad.DoSelectIndex(System.Int32)
+  fullName: SoundpadConnector.Soundpad.DoSelectIndex(System.Int32)
+  nameWithType: Soundpad.DoSelectIndex(Int32)
+- uid: SoundpadConnector.Soundpad.DoSelectIndex*
   name: DoSelectIndex
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_DoSelectIndex_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.DoSelectIndex
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_DoSelectIndex_
+  commentId: Overload:SoundpadConnector.Soundpad.DoSelectIndex
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.DoSelectIndex
-  nameWithType: SoundpadConnector.DoSelectIndex
-- uid: SoundpadConnector.SoundpadConnector.GetMainFrameTitleText
+  fullName: SoundpadConnector.Soundpad.DoSelectIndex
+  nameWithType: Soundpad.DoSelectIndex
+- uid: SoundpadConnector.Soundpad.GetMainFrameTitleText
   name: GetMainFrameTitleText()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetMainFrameTitleText
-  commentId: M:SoundpadConnector.SoundpadConnector.GetMainFrameTitleText
-  fullName: SoundpadConnector.SoundpadConnector.GetMainFrameTitleText()
-  nameWithType: SoundpadConnector.GetMainFrameTitleText()
-- uid: SoundpadConnector.SoundpadConnector.GetMainFrameTitleText*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetMainFrameTitleText
+  commentId: M:SoundpadConnector.Soundpad.GetMainFrameTitleText
+  fullName: SoundpadConnector.Soundpad.GetMainFrameTitleText()
+  nameWithType: Soundpad.GetMainFrameTitleText()
+- uid: SoundpadConnector.Soundpad.GetMainFrameTitleText*
   name: GetMainFrameTitleText
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetMainFrameTitleText_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.GetMainFrameTitleText
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetMainFrameTitleText_
+  commentId: Overload:SoundpadConnector.Soundpad.GetMainFrameTitleText
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.GetMainFrameTitleText
-  nameWithType: SoundpadConnector.GetMainFrameTitleText
-- uid: SoundpadConnector.SoundpadConnector.GetPlaybackDuration
+  fullName: SoundpadConnector.Soundpad.GetMainFrameTitleText
+  nameWithType: Soundpad.GetMainFrameTitleText
+- uid: SoundpadConnector.Soundpad.GetPlaybackDuration
   name: GetPlaybackDuration()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetPlaybackDuration
-  commentId: M:SoundpadConnector.SoundpadConnector.GetPlaybackDuration
-  fullName: SoundpadConnector.SoundpadConnector.GetPlaybackDuration()
-  nameWithType: SoundpadConnector.GetPlaybackDuration()
-- uid: SoundpadConnector.SoundpadConnector.GetPlaybackDuration*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetPlaybackDuration
+  commentId: M:SoundpadConnector.Soundpad.GetPlaybackDuration
+  fullName: SoundpadConnector.Soundpad.GetPlaybackDuration()
+  nameWithType: Soundpad.GetPlaybackDuration()
+- uid: SoundpadConnector.Soundpad.GetPlaybackDuration*
   name: GetPlaybackDuration
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetPlaybackDuration_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.GetPlaybackDuration
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetPlaybackDuration_
+  commentId: Overload:SoundpadConnector.Soundpad.GetPlaybackDuration
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.GetPlaybackDuration
-  nameWithType: SoundpadConnector.GetPlaybackDuration
-- uid: SoundpadConnector.SoundpadConnector.GetPlaybackPosition
+  fullName: SoundpadConnector.Soundpad.GetPlaybackDuration
+  nameWithType: Soundpad.GetPlaybackDuration
+- uid: SoundpadConnector.Soundpad.GetPlaybackPosition
   name: GetPlaybackPosition()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetPlaybackPosition
-  commentId: M:SoundpadConnector.SoundpadConnector.GetPlaybackPosition
-  fullName: SoundpadConnector.SoundpadConnector.GetPlaybackPosition()
-  nameWithType: SoundpadConnector.GetPlaybackPosition()
-- uid: SoundpadConnector.SoundpadConnector.GetPlaybackPosition*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetPlaybackPosition
+  commentId: M:SoundpadConnector.Soundpad.GetPlaybackPosition
+  fullName: SoundpadConnector.Soundpad.GetPlaybackPosition()
+  nameWithType: Soundpad.GetPlaybackPosition()
+- uid: SoundpadConnector.Soundpad.GetPlaybackPosition*
   name: GetPlaybackPosition
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetPlaybackPosition_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.GetPlaybackPosition
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetPlaybackPosition_
+  commentId: Overload:SoundpadConnector.Soundpad.GetPlaybackPosition
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.GetPlaybackPosition
-  nameWithType: SoundpadConnector.GetPlaybackPosition
-- uid: SoundpadConnector.SoundpadConnector.GetPlayStatus
+  fullName: SoundpadConnector.Soundpad.GetPlaybackPosition
+  nameWithType: Soundpad.GetPlaybackPosition
+- uid: SoundpadConnector.Soundpad.GetPlayStatus
   name: GetPlayStatus()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetPlayStatus
-  commentId: M:SoundpadConnector.SoundpadConnector.GetPlayStatus
-  fullName: SoundpadConnector.SoundpadConnector.GetPlayStatus()
-  nameWithType: SoundpadConnector.GetPlayStatus()
-- uid: SoundpadConnector.SoundpadConnector.GetPlayStatus*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetPlayStatus
+  commentId: M:SoundpadConnector.Soundpad.GetPlayStatus
+  fullName: SoundpadConnector.Soundpad.GetPlayStatus()
+  nameWithType: Soundpad.GetPlayStatus()
+- uid: SoundpadConnector.Soundpad.GetPlayStatus*
   name: GetPlayStatus
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetPlayStatus_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.GetPlayStatus
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetPlayStatus_
+  commentId: Overload:SoundpadConnector.Soundpad.GetPlayStatus
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.GetPlayStatus
-  nameWithType: SoundpadConnector.GetPlayStatus
-- uid: SoundpadConnector.SoundpadConnector.GetRecordingPeak
+  fullName: SoundpadConnector.Soundpad.GetPlayStatus
+  nameWithType: Soundpad.GetPlayStatus
+- uid: SoundpadConnector.Soundpad.GetRecordingPeak
   name: GetRecordingPeak()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetRecordingPeak
-  commentId: M:SoundpadConnector.SoundpadConnector.GetRecordingPeak
-  fullName: SoundpadConnector.SoundpadConnector.GetRecordingPeak()
-  nameWithType: SoundpadConnector.GetRecordingPeak()
-- uid: SoundpadConnector.SoundpadConnector.GetRecordingPeak*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetRecordingPeak
+  commentId: M:SoundpadConnector.Soundpad.GetRecordingPeak
+  fullName: SoundpadConnector.Soundpad.GetRecordingPeak()
+  nameWithType: Soundpad.GetRecordingPeak()
+- uid: SoundpadConnector.Soundpad.GetRecordingPeak*
   name: GetRecordingPeak
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetRecordingPeak_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.GetRecordingPeak
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetRecordingPeak_
+  commentId: Overload:SoundpadConnector.Soundpad.GetRecordingPeak
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.GetRecordingPeak
-  nameWithType: SoundpadConnector.GetRecordingPeak
-- uid: SoundpadConnector.SoundpadConnector.GetRecordingPosition
+  fullName: SoundpadConnector.Soundpad.GetRecordingPeak
+  nameWithType: Soundpad.GetRecordingPeak
+- uid: SoundpadConnector.Soundpad.GetRecordingPosition
   name: GetRecordingPosition()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetRecordingPosition
-  commentId: M:SoundpadConnector.SoundpadConnector.GetRecordingPosition
-  fullName: SoundpadConnector.SoundpadConnector.GetRecordingPosition()
-  nameWithType: SoundpadConnector.GetRecordingPosition()
-- uid: SoundpadConnector.SoundpadConnector.GetRecordingPosition*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetRecordingPosition
+  commentId: M:SoundpadConnector.Soundpad.GetRecordingPosition
+  fullName: SoundpadConnector.Soundpad.GetRecordingPosition()
+  nameWithType: Soundpad.GetRecordingPosition()
+- uid: SoundpadConnector.Soundpad.GetRecordingPosition*
   name: GetRecordingPosition
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetRecordingPosition_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.GetRecordingPosition
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetRecordingPosition_
+  commentId: Overload:SoundpadConnector.Soundpad.GetRecordingPosition
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.GetRecordingPosition
-  nameWithType: SoundpadConnector.GetRecordingPosition
-- uid: SoundpadConnector.SoundpadConnector.GetSoundFileCount
+  fullName: SoundpadConnector.Soundpad.GetRecordingPosition
+  nameWithType: Soundpad.GetRecordingPosition
+- uid: SoundpadConnector.Soundpad.GetSoundFileCount
   name: GetSoundFileCount()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetSoundFileCount
-  commentId: M:SoundpadConnector.SoundpadConnector.GetSoundFileCount
-  fullName: SoundpadConnector.SoundpadConnector.GetSoundFileCount()
-  nameWithType: SoundpadConnector.GetSoundFileCount()
-- uid: SoundpadConnector.SoundpadConnector.GetSoundFileCount*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetSoundFileCount
+  commentId: M:SoundpadConnector.Soundpad.GetSoundFileCount
+  fullName: SoundpadConnector.Soundpad.GetSoundFileCount()
+  nameWithType: Soundpad.GetSoundFileCount()
+- uid: SoundpadConnector.Soundpad.GetSoundFileCount*
   name: GetSoundFileCount
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetSoundFileCount_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.GetSoundFileCount
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetSoundFileCount_
+  commentId: Overload:SoundpadConnector.Soundpad.GetSoundFileCount
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.GetSoundFileCount
-  nameWithType: SoundpadConnector.GetSoundFileCount
-- uid: SoundpadConnector.SoundpadConnector.GetSoundlist
+  fullName: SoundpadConnector.Soundpad.GetSoundFileCount
+  nameWithType: Soundpad.GetSoundFileCount
+- uid: SoundpadConnector.Soundpad.GetSoundlist
   name: GetSoundlist()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetSoundlist
-  commentId: M:SoundpadConnector.SoundpadConnector.GetSoundlist
-  fullName: SoundpadConnector.SoundpadConnector.GetSoundlist()
-  nameWithType: SoundpadConnector.GetSoundlist()
-- uid: SoundpadConnector.SoundpadConnector.GetSoundlist(System.Int32)
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetSoundlist
+  commentId: M:SoundpadConnector.Soundpad.GetSoundlist
+  fullName: SoundpadConnector.Soundpad.GetSoundlist()
+  nameWithType: Soundpad.GetSoundlist()
+- uid: SoundpadConnector.Soundpad.GetSoundlist(System.Int32)
   name: GetSoundlist(Int32)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetSoundlist_System_Int32_
-  commentId: M:SoundpadConnector.SoundpadConnector.GetSoundlist(System.Int32)
-  fullName: SoundpadConnector.SoundpadConnector.GetSoundlist(System.Int32)
-  nameWithType: SoundpadConnector.GetSoundlist(Int32)
-- uid: SoundpadConnector.SoundpadConnector.GetSoundlist(System.Int32,System.Int32)
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetSoundlist_System_Int32_
+  commentId: M:SoundpadConnector.Soundpad.GetSoundlist(System.Int32)
+  fullName: SoundpadConnector.Soundpad.GetSoundlist(System.Int32)
+  nameWithType: Soundpad.GetSoundlist(Int32)
+- uid: SoundpadConnector.Soundpad.GetSoundlist(System.Int32,System.Int32)
   name: GetSoundlist(Int32, Int32)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetSoundlist_System_Int32_System_Int32_
-  commentId: M:SoundpadConnector.SoundpadConnector.GetSoundlist(System.Int32,System.Int32)
-  fullName: SoundpadConnector.SoundpadConnector.GetSoundlist(System.Int32, System.Int32)
-  nameWithType: SoundpadConnector.GetSoundlist(Int32, Int32)
-- uid: SoundpadConnector.SoundpadConnector.GetSoundlist*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetSoundlist_System_Int32_System_Int32_
+  commentId: M:SoundpadConnector.Soundpad.GetSoundlist(System.Int32,System.Int32)
+  fullName: SoundpadConnector.Soundpad.GetSoundlist(System.Int32, System.Int32)
+  nameWithType: Soundpad.GetSoundlist(Int32, Int32)
+- uid: SoundpadConnector.Soundpad.GetSoundlist*
   name: GetSoundlist
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetSoundlist_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.GetSoundlist
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetSoundlist_
+  commentId: Overload:SoundpadConnector.Soundpad.GetSoundlist
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.GetSoundlist
-  nameWithType: SoundpadConnector.GetSoundlist
-- uid: SoundpadConnector.SoundpadConnector.GetStatusBarText
+  fullName: SoundpadConnector.Soundpad.GetSoundlist
+  nameWithType: Soundpad.GetSoundlist
+- uid: SoundpadConnector.Soundpad.GetStatusBarText
   name: GetStatusBarText()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetStatusBarText
-  commentId: M:SoundpadConnector.SoundpadConnector.GetStatusBarText
-  fullName: SoundpadConnector.SoundpadConnector.GetStatusBarText()
-  nameWithType: SoundpadConnector.GetStatusBarText()
-- uid: SoundpadConnector.SoundpadConnector.GetStatusBarText*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetStatusBarText
+  commentId: M:SoundpadConnector.Soundpad.GetStatusBarText
+  fullName: SoundpadConnector.Soundpad.GetStatusBarText()
+  nameWithType: Soundpad.GetStatusBarText()
+- uid: SoundpadConnector.Soundpad.GetStatusBarText*
   name: GetStatusBarText
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetStatusBarText_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.GetStatusBarText
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetStatusBarText_
+  commentId: Overload:SoundpadConnector.Soundpad.GetStatusBarText
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.GetStatusBarText
-  nameWithType: SoundpadConnector.GetStatusBarText
-- uid: SoundpadConnector.SoundpadConnector.GetVersion
+  fullName: SoundpadConnector.Soundpad.GetStatusBarText
+  nameWithType: Soundpad.GetStatusBarText
+- uid: SoundpadConnector.Soundpad.GetVersion
   name: GetVersion()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetVersion
-  commentId: M:SoundpadConnector.SoundpadConnector.GetVersion
-  fullName: SoundpadConnector.SoundpadConnector.GetVersion()
-  nameWithType: SoundpadConnector.GetVersion()
-- uid: SoundpadConnector.SoundpadConnector.GetVersion*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetVersion
+  commentId: M:SoundpadConnector.Soundpad.GetVersion
+  fullName: SoundpadConnector.Soundpad.GetVersion()
+  nameWithType: Soundpad.GetVersion()
+- uid: SoundpadConnector.Soundpad.GetVersion*
   name: GetVersion
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetVersion_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.GetVersion
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetVersion_
+  commentId: Overload:SoundpadConnector.Soundpad.GetVersion
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.GetVersion
-  nameWithType: SoundpadConnector.GetVersion
-- uid: SoundpadConnector.SoundpadConnector.GetVolume
+  fullName: SoundpadConnector.Soundpad.GetVersion
+  nameWithType: Soundpad.GetVersion
+- uid: SoundpadConnector.Soundpad.GetVolume
   name: GetVolume()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetVolume
-  commentId: M:SoundpadConnector.SoundpadConnector.GetVolume
-  fullName: SoundpadConnector.SoundpadConnector.GetVolume()
-  nameWithType: SoundpadConnector.GetVolume()
-- uid: SoundpadConnector.SoundpadConnector.GetVolume*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetVolume
+  commentId: M:SoundpadConnector.Soundpad.GetVolume
+  fullName: SoundpadConnector.Soundpad.GetVolume()
+  nameWithType: Soundpad.GetVolume()
+- uid: SoundpadConnector.Soundpad.GetVolume*
   name: GetVolume
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_GetVolume_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.GetVolume
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetVolume_
+  commentId: Overload:SoundpadConnector.Soundpad.GetVolume
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.GetVolume
-  nameWithType: SoundpadConnector.GetVolume
-- uid: SoundpadConnector.SoundpadConnector.IsAlive
+  fullName: SoundpadConnector.Soundpad.GetVolume
+  nameWithType: Soundpad.GetVolume
+- uid: SoundpadConnector.Soundpad.IsAlive
   name: IsAlive()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_IsAlive
-  commentId: M:SoundpadConnector.SoundpadConnector.IsAlive
-  fullName: SoundpadConnector.SoundpadConnector.IsAlive()
-  nameWithType: SoundpadConnector.IsAlive()
-- uid: SoundpadConnector.SoundpadConnector.IsAlive*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_IsAlive
+  commentId: M:SoundpadConnector.Soundpad.IsAlive
+  fullName: SoundpadConnector.Soundpad.IsAlive()
+  nameWithType: Soundpad.IsAlive()
+- uid: SoundpadConnector.Soundpad.IsAlive*
   name: IsAlive
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_IsAlive_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.IsAlive
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_IsAlive_
+  commentId: Overload:SoundpadConnector.Soundpad.IsAlive
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.IsAlive
-  nameWithType: SoundpadConnector.IsAlive
-- uid: SoundpadConnector.SoundpadConnector.IsMuted
+  fullName: SoundpadConnector.Soundpad.IsAlive
+  nameWithType: Soundpad.IsAlive
+- uid: SoundpadConnector.Soundpad.IsMuted
   name: IsMuted()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_IsMuted
-  commentId: M:SoundpadConnector.SoundpadConnector.IsMuted
-  fullName: SoundpadConnector.SoundpadConnector.IsMuted()
-  nameWithType: SoundpadConnector.IsMuted()
-- uid: SoundpadConnector.SoundpadConnector.IsMuted*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_IsMuted
+  commentId: M:SoundpadConnector.Soundpad.IsMuted
+  fullName: SoundpadConnector.Soundpad.IsMuted()
+  nameWithType: Soundpad.IsMuted()
+- uid: SoundpadConnector.Soundpad.IsMuted*
   name: IsMuted
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_IsMuted_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.IsMuted
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_IsMuted_
+  commentId: Overload:SoundpadConnector.Soundpad.IsMuted
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.IsMuted
-  nameWithType: SoundpadConnector.IsMuted
-- uid: SoundpadConnector.SoundpadConnector.Jump(System.Int32)
+  fullName: SoundpadConnector.Soundpad.IsMuted
+  nameWithType: Soundpad.IsMuted
+- uid: SoundpadConnector.Soundpad.Jump(System.Int32)
   name: Jump(Int32)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Jump_System_Int32_
-  commentId: M:SoundpadConnector.SoundpadConnector.Jump(System.Int32)
-  fullName: SoundpadConnector.SoundpadConnector.Jump(System.Int32)
-  nameWithType: SoundpadConnector.Jump(Int32)
-- uid: SoundpadConnector.SoundpadConnector.Jump*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Jump_System_Int32_
+  commentId: M:SoundpadConnector.Soundpad.Jump(System.Int32)
+  fullName: SoundpadConnector.Soundpad.Jump(System.Int32)
+  nameWithType: Soundpad.Jump(Int32)
+- uid: SoundpadConnector.Soundpad.Jump*
   name: Jump
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Jump_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.Jump
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Jump_
+  commentId: Overload:SoundpadConnector.Soundpad.Jump
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.Jump
-  nameWithType: SoundpadConnector.Jump
-- uid: SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs
-  name: SoundpadConnector.OnDisconnectedEventArgs
-  href: api/SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs.html
-  commentId: T:SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs
-  fullName: SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs
-  nameWithType: SoundpadConnector.OnDisconnectedEventArgs
-- uid: SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs.Exception
+  fullName: SoundpadConnector.Soundpad.Jump
+  nameWithType: Soundpad.Jump
+- uid: SoundpadConnector.Soundpad.OnDisconnectedEventArgs
+  name: Soundpad.OnDisconnectedEventArgs
+  href: api/SoundpadConnector.Soundpad.OnDisconnectedEventArgs.html
+  commentId: T:SoundpadConnector.Soundpad.OnDisconnectedEventArgs
+  fullName: SoundpadConnector.Soundpad.OnDisconnectedEventArgs
+  nameWithType: Soundpad.OnDisconnectedEventArgs
+- uid: SoundpadConnector.Soundpad.OnDisconnectedEventArgs.Exception
   name: Exception
-  href: api/SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs.html#SoundpadConnector_SoundpadConnector_OnDisconnectedEventArgs_Exception
-  commentId: P:SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs.Exception
-  fullName: SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs.Exception
-  nameWithType: SoundpadConnector.OnDisconnectedEventArgs.Exception
-- uid: SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs.Exception*
+  href: api/SoundpadConnector.Soundpad.OnDisconnectedEventArgs.html#SoundpadConnector_Soundpad_OnDisconnectedEventArgs_Exception
+  commentId: P:SoundpadConnector.Soundpad.OnDisconnectedEventArgs.Exception
+  fullName: SoundpadConnector.Soundpad.OnDisconnectedEventArgs.Exception
+  nameWithType: Soundpad.OnDisconnectedEventArgs.Exception
+- uid: SoundpadConnector.Soundpad.OnDisconnectedEventArgs.Exception*
   name: Exception
-  href: api/SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs.html#SoundpadConnector_SoundpadConnector_OnDisconnectedEventArgs_Exception_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs.Exception
+  href: api/SoundpadConnector.Soundpad.OnDisconnectedEventArgs.html#SoundpadConnector_Soundpad_OnDisconnectedEventArgs_Exception_
+  commentId: Overload:SoundpadConnector.Soundpad.OnDisconnectedEventArgs.Exception
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.OnDisconnectedEventArgs.Exception
-  nameWithType: SoundpadConnector.OnDisconnectedEventArgs.Exception
-- uid: SoundpadConnector.SoundpadConnector.PlayNextSound
+  fullName: SoundpadConnector.Soundpad.OnDisconnectedEventArgs.Exception
+  nameWithType: Soundpad.OnDisconnectedEventArgs.Exception
+- uid: SoundpadConnector.Soundpad.PlayNextSound
   name: PlayNextSound()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_PlayNextSound
-  commentId: M:SoundpadConnector.SoundpadConnector.PlayNextSound
-  fullName: SoundpadConnector.SoundpadConnector.PlayNextSound()
-  nameWithType: SoundpadConnector.PlayNextSound()
-- uid: SoundpadConnector.SoundpadConnector.PlayNextSound*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_PlayNextSound
+  commentId: M:SoundpadConnector.Soundpad.PlayNextSound
+  fullName: SoundpadConnector.Soundpad.PlayNextSound()
+  nameWithType: Soundpad.PlayNextSound()
+- uid: SoundpadConnector.Soundpad.PlayNextSound*
   name: PlayNextSound
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_PlayNextSound_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.PlayNextSound
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_PlayNextSound_
+  commentId: Overload:SoundpadConnector.Soundpad.PlayNextSound
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.PlayNextSound
-  nameWithType: SoundpadConnector.PlayNextSound
-- uid: SoundpadConnector.SoundpadConnector.PlayPreviousSound
+  fullName: SoundpadConnector.Soundpad.PlayNextSound
+  nameWithType: Soundpad.PlayNextSound
+- uid: SoundpadConnector.Soundpad.PlayPreviousSound
   name: PlayPreviousSound()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_PlayPreviousSound
-  commentId: M:SoundpadConnector.SoundpadConnector.PlayPreviousSound
-  fullName: SoundpadConnector.SoundpadConnector.PlayPreviousSound()
-  nameWithType: SoundpadConnector.PlayPreviousSound()
-- uid: SoundpadConnector.SoundpadConnector.PlayPreviousSound*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_PlayPreviousSound
+  commentId: M:SoundpadConnector.Soundpad.PlayPreviousSound
+  fullName: SoundpadConnector.Soundpad.PlayPreviousSound()
+  nameWithType: Soundpad.PlayPreviousSound()
+- uid: SoundpadConnector.Soundpad.PlayPreviousSound*
   name: PlayPreviousSound
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_PlayPreviousSound_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.PlayPreviousSound
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_PlayPreviousSound_
+  commentId: Overload:SoundpadConnector.Soundpad.PlayPreviousSound
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.PlayPreviousSound
-  nameWithType: SoundpadConnector.PlayPreviousSound
-- uid: SoundpadConnector.SoundpadConnector.PlaySound(System.Int32)
+  fullName: SoundpadConnector.Soundpad.PlayPreviousSound
+  nameWithType: Soundpad.PlayPreviousSound
+- uid: SoundpadConnector.Soundpad.PlaySound(System.Int32)
   name: PlaySound(Int32)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_PlaySound_System_Int32_
-  commentId: M:SoundpadConnector.SoundpadConnector.PlaySound(System.Int32)
-  fullName: SoundpadConnector.SoundpadConnector.PlaySound(System.Int32)
-  nameWithType: SoundpadConnector.PlaySound(Int32)
-- uid: SoundpadConnector.SoundpadConnector.PlaySound(System.Int32,System.Boolean,System.Boolean)
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_PlaySound_System_Int32_
+  commentId: M:SoundpadConnector.Soundpad.PlaySound(System.Int32)
+  fullName: SoundpadConnector.Soundpad.PlaySound(System.Int32)
+  nameWithType: Soundpad.PlaySound(Int32)
+- uid: SoundpadConnector.Soundpad.PlaySound(System.Int32,System.Boolean,System.Boolean)
   name: PlaySound(Int32, Boolean, Boolean)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_PlaySound_System_Int32_System_Boolean_System_Boolean_
-  commentId: M:SoundpadConnector.SoundpadConnector.PlaySound(System.Int32,System.Boolean,System.Boolean)
-  fullName: SoundpadConnector.SoundpadConnector.PlaySound(System.Int32, System.Boolean, System.Boolean)
-  nameWithType: SoundpadConnector.PlaySound(Int32, Boolean, Boolean)
-- uid: SoundpadConnector.SoundpadConnector.PlaySound*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_PlaySound_System_Int32_System_Boolean_System_Boolean_
+  commentId: M:SoundpadConnector.Soundpad.PlaySound(System.Int32,System.Boolean,System.Boolean)
+  fullName: SoundpadConnector.Soundpad.PlaySound(System.Int32, System.Boolean, System.Boolean)
+  nameWithType: Soundpad.PlaySound(Int32, Boolean, Boolean)
+- uid: SoundpadConnector.Soundpad.PlaySound*
   name: PlaySound
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_PlaySound_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.PlaySound
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_PlaySound_
+  commentId: Overload:SoundpadConnector.Soundpad.PlaySound
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.PlaySound
-  nameWithType: SoundpadConnector.PlaySound
-- uid: SoundpadConnector.SoundpadConnector.PollingInterval
+  fullName: SoundpadConnector.Soundpad.PlaySound
+  nameWithType: Soundpad.PlaySound
+- uid: SoundpadConnector.Soundpad.PollingInterval
   name: PollingInterval
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_PollingInterval
-  commentId: F:SoundpadConnector.SoundpadConnector.PollingInterval
-  fullName: SoundpadConnector.SoundpadConnector.PollingInterval
-  nameWithType: SoundpadConnector.PollingInterval
-- uid: SoundpadConnector.SoundpadConnector.ReconnectInterval
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_PollingInterval
+  commentId: F:SoundpadConnector.Soundpad.PollingInterval
+  fullName: SoundpadConnector.Soundpad.PollingInterval
+  nameWithType: Soundpad.PollingInterval
+- uid: SoundpadConnector.Soundpad.ReconnectInterval
   name: ReconnectInterval
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_ReconnectInterval
-  commentId: F:SoundpadConnector.SoundpadConnector.ReconnectInterval
-  fullName: SoundpadConnector.SoundpadConnector.ReconnectInterval
-  nameWithType: SoundpadConnector.ReconnectInterval
-- uid: SoundpadConnector.SoundpadConnector.Redo
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ReconnectInterval
+  commentId: F:SoundpadConnector.Soundpad.ReconnectInterval
+  fullName: SoundpadConnector.Soundpad.ReconnectInterval
+  nameWithType: Soundpad.ReconnectInterval
+- uid: SoundpadConnector.Soundpad.Redo
   name: Redo()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Redo
-  commentId: M:SoundpadConnector.SoundpadConnector.Redo
-  fullName: SoundpadConnector.SoundpadConnector.Redo()
-  nameWithType: SoundpadConnector.Redo()
-- uid: SoundpadConnector.SoundpadConnector.Redo*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Redo
+  commentId: M:SoundpadConnector.Soundpad.Redo
+  fullName: SoundpadConnector.Soundpad.Redo()
+  nameWithType: Soundpad.Redo()
+- uid: SoundpadConnector.Soundpad.Redo*
   name: Redo
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Redo_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.Redo
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Redo_
+  commentId: Overload:SoundpadConnector.Soundpad.Redo
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.Redo
-  nameWithType: SoundpadConnector.Redo
-- uid: SoundpadConnector.SoundpadConnector.RemoveSelectedEntries(System.Boolean)
+  fullName: SoundpadConnector.Soundpad.Redo
+  nameWithType: Soundpad.Redo
+- uid: SoundpadConnector.Soundpad.RemoveSelectedEntries(System.Boolean)
   name: RemoveSelectedEntries(Boolean)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_RemoveSelectedEntries_System_Boolean_
-  commentId: M:SoundpadConnector.SoundpadConnector.RemoveSelectedEntries(System.Boolean)
-  fullName: SoundpadConnector.SoundpadConnector.RemoveSelectedEntries(System.Boolean)
-  nameWithType: SoundpadConnector.RemoveSelectedEntries(Boolean)
-- uid: SoundpadConnector.SoundpadConnector.RemoveSelectedEntries*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_RemoveSelectedEntries_System_Boolean_
+  commentId: M:SoundpadConnector.Soundpad.RemoveSelectedEntries(System.Boolean)
+  fullName: SoundpadConnector.Soundpad.RemoveSelectedEntries(System.Boolean)
+  nameWithType: Soundpad.RemoveSelectedEntries(Boolean)
+- uid: SoundpadConnector.Soundpad.RemoveSelectedEntries*
   name: RemoveSelectedEntries
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_RemoveSelectedEntries_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.RemoveSelectedEntries
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_RemoveSelectedEntries_
+  commentId: Overload:SoundpadConnector.Soundpad.RemoveSelectedEntries
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.RemoveSelectedEntries
-  nameWithType: SoundpadConnector.RemoveSelectedEntries
-- uid: SoundpadConnector.SoundpadConnector.ResetAndHideSearch
+  fullName: SoundpadConnector.Soundpad.RemoveSelectedEntries
+  nameWithType: Soundpad.RemoveSelectedEntries
+- uid: SoundpadConnector.Soundpad.ResetAndHideSearch
   name: ResetAndHideSearch()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_ResetAndHideSearch
-  commentId: M:SoundpadConnector.SoundpadConnector.ResetAndHideSearch
-  fullName: SoundpadConnector.SoundpadConnector.ResetAndHideSearch()
-  nameWithType: SoundpadConnector.ResetAndHideSearch()
-- uid: SoundpadConnector.SoundpadConnector.ResetAndHideSearch*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ResetAndHideSearch
+  commentId: M:SoundpadConnector.Soundpad.ResetAndHideSearch
+  fullName: SoundpadConnector.Soundpad.ResetAndHideSearch()
+  nameWithType: Soundpad.ResetAndHideSearch()
+- uid: SoundpadConnector.Soundpad.ResetAndHideSearch*
   name: ResetAndHideSearch
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_ResetAndHideSearch_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.ResetAndHideSearch
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ResetAndHideSearch_
+  commentId: Overload:SoundpadConnector.Soundpad.ResetAndHideSearch
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.ResetAndHideSearch
-  nameWithType: SoundpadConnector.ResetAndHideSearch
-- uid: SoundpadConnector.SoundpadConnector.SaveSoundlist
+  fullName: SoundpadConnector.Soundpad.ResetAndHideSearch
+  nameWithType: Soundpad.ResetAndHideSearch
+- uid: SoundpadConnector.Soundpad.SaveSoundlist
   name: SaveSoundlist()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_SaveSoundlist
-  commentId: M:SoundpadConnector.SoundpadConnector.SaveSoundlist
-  fullName: SoundpadConnector.SoundpadConnector.SaveSoundlist()
-  nameWithType: SoundpadConnector.SaveSoundlist()
-- uid: SoundpadConnector.SoundpadConnector.SaveSoundlist*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_SaveSoundlist
+  commentId: M:SoundpadConnector.Soundpad.SaveSoundlist
+  fullName: SoundpadConnector.Soundpad.SaveSoundlist()
+  nameWithType: Soundpad.SaveSoundlist()
+- uid: SoundpadConnector.Soundpad.SaveSoundlist*
   name: SaveSoundlist
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_SaveSoundlist_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.SaveSoundlist
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_SaveSoundlist_
+  commentId: Overload:SoundpadConnector.Soundpad.SaveSoundlist
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.SaveSoundlist
-  nameWithType: SoundpadConnector.SaveSoundlist
-- uid: SoundpadConnector.SoundpadConnector.Scroll(System.Int32)
+  fullName: SoundpadConnector.Soundpad.SaveSoundlist
+  nameWithType: Soundpad.SaveSoundlist
+- uid: SoundpadConnector.Soundpad.Scroll(System.Int32)
   name: Scroll(Int32)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Scroll_System_Int32_
-  commentId: M:SoundpadConnector.SoundpadConnector.Scroll(System.Int32)
-  fullName: SoundpadConnector.SoundpadConnector.Scroll(System.Int32)
-  nameWithType: SoundpadConnector.Scroll(Int32)
-- uid: SoundpadConnector.SoundpadConnector.Scroll*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Scroll_System_Int32_
+  commentId: M:SoundpadConnector.Soundpad.Scroll(System.Int32)
+  fullName: SoundpadConnector.Soundpad.Scroll(System.Int32)
+  nameWithType: Soundpad.Scroll(Int32)
+- uid: SoundpadConnector.Soundpad.Scroll*
   name: Scroll
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Scroll_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.Scroll
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Scroll_
+  commentId: Overload:SoundpadConnector.Soundpad.Scroll
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.Scroll
-  nameWithType: SoundpadConnector.Scroll
-- uid: SoundpadConnector.SoundpadConnector.ScrollTo(System.Int32)
+  fullName: SoundpadConnector.Soundpad.Scroll
+  nameWithType: Soundpad.Scroll
+- uid: SoundpadConnector.Soundpad.ScrollTo(System.Int32)
   name: ScrollTo(Int32)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_ScrollTo_System_Int32_
-  commentId: M:SoundpadConnector.SoundpadConnector.ScrollTo(System.Int32)
-  fullName: SoundpadConnector.SoundpadConnector.ScrollTo(System.Int32)
-  nameWithType: SoundpadConnector.ScrollTo(Int32)
-- uid: SoundpadConnector.SoundpadConnector.ScrollTo*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ScrollTo_System_Int32_
+  commentId: M:SoundpadConnector.Soundpad.ScrollTo(System.Int32)
+  fullName: SoundpadConnector.Soundpad.ScrollTo(System.Int32)
+  nameWithType: Soundpad.ScrollTo(Int32)
+- uid: SoundpadConnector.Soundpad.ScrollTo*
   name: ScrollTo
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_ScrollTo_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.ScrollTo
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ScrollTo_
+  commentId: Overload:SoundpadConnector.Soundpad.ScrollTo
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.ScrollTo
-  nameWithType: SoundpadConnector.ScrollTo
-- uid: SoundpadConnector.SoundpadConnector.Search(System.String)
+  fullName: SoundpadConnector.Soundpad.ScrollTo
+  nameWithType: Soundpad.ScrollTo
+- uid: SoundpadConnector.Soundpad.Search(System.String)
   name: Search(String)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Search_System_String_
-  commentId: M:SoundpadConnector.SoundpadConnector.Search(System.String)
-  fullName: SoundpadConnector.SoundpadConnector.Search(System.String)
-  nameWithType: SoundpadConnector.Search(String)
-- uid: SoundpadConnector.SoundpadConnector.Search*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Search_System_String_
+  commentId: M:SoundpadConnector.Soundpad.Search(System.String)
+  fullName: SoundpadConnector.Soundpad.Search(System.String)
+  nameWithType: Soundpad.Search(String)
+- uid: SoundpadConnector.Soundpad.Search*
   name: Search
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Search_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.Search
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Search_
+  commentId: Overload:SoundpadConnector.Soundpad.Search
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.Search
-  nameWithType: SoundpadConnector.Search
-- uid: SoundpadConnector.SoundpadConnector.SelectNextHit
+  fullName: SoundpadConnector.Soundpad.Search
+  nameWithType: Soundpad.Search
+- uid: SoundpadConnector.Soundpad.SelectNextHit
   name: SelectNextHit()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_SelectNextHit
-  commentId: M:SoundpadConnector.SoundpadConnector.SelectNextHit
-  fullName: SoundpadConnector.SoundpadConnector.SelectNextHit()
-  nameWithType: SoundpadConnector.SelectNextHit()
-- uid: SoundpadConnector.SoundpadConnector.SelectNextHit*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_SelectNextHit
+  commentId: M:SoundpadConnector.Soundpad.SelectNextHit
+  fullName: SoundpadConnector.Soundpad.SelectNextHit()
+  nameWithType: Soundpad.SelectNextHit()
+- uid: SoundpadConnector.Soundpad.SelectNextHit*
   name: SelectNextHit
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_SelectNextHit_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.SelectNextHit
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_SelectNextHit_
+  commentId: Overload:SoundpadConnector.Soundpad.SelectNextHit
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.SelectNextHit
-  nameWithType: SoundpadConnector.SelectNextHit
-- uid: SoundpadConnector.SoundpadConnector.SelectPreviousHit
+  fullName: SoundpadConnector.Soundpad.SelectNextHit
+  nameWithType: Soundpad.SelectNextHit
+- uid: SoundpadConnector.Soundpad.SelectPreviousHit
   name: SelectPreviousHit()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_SelectPreviousHit
-  commentId: M:SoundpadConnector.SoundpadConnector.SelectPreviousHit
-  fullName: SoundpadConnector.SoundpadConnector.SelectPreviousHit()
-  nameWithType: SoundpadConnector.SelectPreviousHit()
-- uid: SoundpadConnector.SoundpadConnector.SelectPreviousHit*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_SelectPreviousHit
+  commentId: M:SoundpadConnector.Soundpad.SelectPreviousHit
+  fullName: SoundpadConnector.Soundpad.SelectPreviousHit()
+  nameWithType: Soundpad.SelectPreviousHit()
+- uid: SoundpadConnector.Soundpad.SelectPreviousHit*
   name: SelectPreviousHit
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_SelectPreviousHit_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.SelectPreviousHit
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_SelectPreviousHit_
+  commentId: Overload:SoundpadConnector.Soundpad.SelectPreviousHit
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.SelectPreviousHit
-  nameWithType: SoundpadConnector.SelectPreviousHit
-- uid: SoundpadConnector.SoundpadConnector.SetVolume(System.Int32)
+  fullName: SoundpadConnector.Soundpad.SelectPreviousHit
+  nameWithType: Soundpad.SelectPreviousHit
+- uid: SoundpadConnector.Soundpad.SetVolume(System.Int32)
   name: SetVolume(Int32)
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_SetVolume_System_Int32_
-  commentId: M:SoundpadConnector.SoundpadConnector.SetVolume(System.Int32)
-  fullName: SoundpadConnector.SoundpadConnector.SetVolume(System.Int32)
-  nameWithType: SoundpadConnector.SetVolume(Int32)
-- uid: SoundpadConnector.SoundpadConnector.SetVolume*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_SetVolume_System_Int32_
+  commentId: M:SoundpadConnector.Soundpad.SetVolume(System.Int32)
+  fullName: SoundpadConnector.Soundpad.SetVolume(System.Int32)
+  nameWithType: Soundpad.SetVolume(Int32)
+- uid: SoundpadConnector.Soundpad.SetVolume*
   name: SetVolume
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_SetVolume_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.SetVolume
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_SetVolume_
+  commentId: Overload:SoundpadConnector.Soundpad.SetVolume
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.SetVolume
-  nameWithType: SoundpadConnector.SetVolume
-- uid: SoundpadConnector.SoundpadConnector.StartRecording
+  fullName: SoundpadConnector.Soundpad.SetVolume
+  nameWithType: Soundpad.SetVolume
+- uid: SoundpadConnector.Soundpad.StartRecording
   name: StartRecording()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_StartRecording
-  commentId: M:SoundpadConnector.SoundpadConnector.StartRecording
-  fullName: SoundpadConnector.SoundpadConnector.StartRecording()
-  nameWithType: SoundpadConnector.StartRecording()
-- uid: SoundpadConnector.SoundpadConnector.StartRecording*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_StartRecording
+  commentId: M:SoundpadConnector.Soundpad.StartRecording
+  fullName: SoundpadConnector.Soundpad.StartRecording()
+  nameWithType: Soundpad.StartRecording()
+- uid: SoundpadConnector.Soundpad.StartRecording*
   name: StartRecording
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_StartRecording_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.StartRecording
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_StartRecording_
+  commentId: Overload:SoundpadConnector.Soundpad.StartRecording
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.StartRecording
-  nameWithType: SoundpadConnector.StartRecording
-- uid: SoundpadConnector.SoundpadConnector.StatusChanged
+  fullName: SoundpadConnector.Soundpad.StartRecording
+  nameWithType: Soundpad.StartRecording
+- uid: SoundpadConnector.Soundpad.StatusChanged
   name: StatusChanged
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_StatusChanged
-  commentId: E:SoundpadConnector.SoundpadConnector.StatusChanged
-  fullName: SoundpadConnector.SoundpadConnector.StatusChanged
-  nameWithType: SoundpadConnector.StatusChanged
-- uid: SoundpadConnector.SoundpadConnector.StopRecording
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_StatusChanged
+  commentId: E:SoundpadConnector.Soundpad.StatusChanged
+  fullName: SoundpadConnector.Soundpad.StatusChanged
+  nameWithType: Soundpad.StatusChanged
+- uid: SoundpadConnector.Soundpad.StopRecording
   name: StopRecording()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_StopRecording
-  commentId: M:SoundpadConnector.SoundpadConnector.StopRecording
-  fullName: SoundpadConnector.SoundpadConnector.StopRecording()
-  nameWithType: SoundpadConnector.StopRecording()
-- uid: SoundpadConnector.SoundpadConnector.StopRecording*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_StopRecording
+  commentId: M:SoundpadConnector.Soundpad.StopRecording
+  fullName: SoundpadConnector.Soundpad.StopRecording()
+  nameWithType: Soundpad.StopRecording()
+- uid: SoundpadConnector.Soundpad.StopRecording*
   name: StopRecording
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_StopRecording_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.StopRecording
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_StopRecording_
+  commentId: Overload:SoundpadConnector.Soundpad.StopRecording
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.StopRecording
-  nameWithType: SoundpadConnector.StopRecording
-- uid: SoundpadConnector.SoundpadConnector.StopSound
+  fullName: SoundpadConnector.Soundpad.StopRecording
+  nameWithType: Soundpad.StopRecording
+- uid: SoundpadConnector.Soundpad.StopSound
   name: StopSound()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_StopSound
-  commentId: M:SoundpadConnector.SoundpadConnector.StopSound
-  fullName: SoundpadConnector.SoundpadConnector.StopSound()
-  nameWithType: SoundpadConnector.StopSound()
-- uid: SoundpadConnector.SoundpadConnector.StopSound*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_StopSound
+  commentId: M:SoundpadConnector.Soundpad.StopSound
+  fullName: SoundpadConnector.Soundpad.StopSound()
+  nameWithType: Soundpad.StopSound()
+- uid: SoundpadConnector.Soundpad.StopSound*
   name: StopSound
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_StopSound_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.StopSound
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_StopSound_
+  commentId: Overload:SoundpadConnector.Soundpad.StopSound
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.StopSound
-  nameWithType: SoundpadConnector.StopSound
-- uid: SoundpadConnector.SoundpadConnector.ToggleMute
+  fullName: SoundpadConnector.Soundpad.StopSound
+  nameWithType: Soundpad.StopSound
+- uid: SoundpadConnector.Soundpad.ToggleMute
   name: ToggleMute()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_ToggleMute
-  commentId: M:SoundpadConnector.SoundpadConnector.ToggleMute
-  fullName: SoundpadConnector.SoundpadConnector.ToggleMute()
-  nameWithType: SoundpadConnector.ToggleMute()
-- uid: SoundpadConnector.SoundpadConnector.ToggleMute*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ToggleMute
+  commentId: M:SoundpadConnector.Soundpad.ToggleMute
+  fullName: SoundpadConnector.Soundpad.ToggleMute()
+  nameWithType: Soundpad.ToggleMute()
+- uid: SoundpadConnector.Soundpad.ToggleMute*
   name: ToggleMute
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_ToggleMute_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.ToggleMute
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ToggleMute_
+  commentId: Overload:SoundpadConnector.Soundpad.ToggleMute
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.ToggleMute
-  nameWithType: SoundpadConnector.ToggleMute
-- uid: SoundpadConnector.SoundpadConnector.TogglePause
+  fullName: SoundpadConnector.Soundpad.ToggleMute
+  nameWithType: Soundpad.ToggleMute
+- uid: SoundpadConnector.Soundpad.TogglePause
   name: TogglePause()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_TogglePause
-  commentId: M:SoundpadConnector.SoundpadConnector.TogglePause
-  fullName: SoundpadConnector.SoundpadConnector.TogglePause()
-  nameWithType: SoundpadConnector.TogglePause()
-- uid: SoundpadConnector.SoundpadConnector.TogglePause*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_TogglePause
+  commentId: M:SoundpadConnector.Soundpad.TogglePause
+  fullName: SoundpadConnector.Soundpad.TogglePause()
+  nameWithType: Soundpad.TogglePause()
+- uid: SoundpadConnector.Soundpad.TogglePause*
   name: TogglePause
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_TogglePause_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.TogglePause
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_TogglePause_
+  commentId: Overload:SoundpadConnector.Soundpad.TogglePause
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.TogglePause
-  nameWithType: SoundpadConnector.TogglePause
-- uid: SoundpadConnector.SoundpadConnector.Undo
+  fullName: SoundpadConnector.Soundpad.TogglePause
+  nameWithType: Soundpad.TogglePause
+- uid: SoundpadConnector.Soundpad.Undo
   name: Undo()
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Undo
-  commentId: M:SoundpadConnector.SoundpadConnector.Undo
-  fullName: SoundpadConnector.SoundpadConnector.Undo()
-  nameWithType: SoundpadConnector.Undo()
-- uid: SoundpadConnector.SoundpadConnector.Undo*
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Undo
+  commentId: M:SoundpadConnector.Soundpad.Undo
+  fullName: SoundpadConnector.Soundpad.Undo()
+  nameWithType: Soundpad.Undo()
+- uid: SoundpadConnector.Soundpad.Undo*
   name: Undo
-  href: api/SoundpadConnector.SoundpadConnector.html#SoundpadConnector_SoundpadConnector_Undo_
-  commentId: Overload:SoundpadConnector.SoundpadConnector.Undo
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_Undo_
+  commentId: Overload:SoundpadConnector.Soundpad.Undo
   isSpec: "True"
-  fullName: SoundpadConnector.SoundpadConnector.Undo
-  nameWithType: SoundpadConnector.Undo
+  fullName: SoundpadConnector.Soundpad.Undo
+  nameWithType: Soundpad.Undo
 - uid: SoundpadConnector.XML
   name: SoundpadConnector.XML
   href: api/SoundpadConnector.XML.html
