@@ -1,5 +1,5 @@
 <h1 align="center">
-   <img src="SoundpadConnectorLogo.png" alt="Logo Soundpad Connector" title="Logo Soundpad Connector" />
+   <img src="docfx/images/SoundpadConnectorLogo.png" alt="Logo SoundpadConnector .NET" title="SoundpadConnector .NET" />
 </h1>
 
 <p align="center">
@@ -8,19 +8,29 @@
 
 ## Table of contents
 
+  * [Requirements](#requirements)
   * [Installation](#installation)
   * [QuickStart](#quickstart)
   * [Documentation](#documentation)
+    * [API docs](#api-docs)
+    * [Build the docs](#build-the-docs)
   * [Examples](#examples)
   * [Limitations](#limitations)
   * [Contributing](#contributing)
   * [License](#license)
   * [Special thanks](#special-thanks)
 
+## Requirements
+This library is build on .NET Standard 2.0. Following plattforms are [supported](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support):
+
+* .NET Core 2.0 or higher
+* .NET Framework 4.6.1 or higher
+
+
 ## Installation
-Get the NuGet package from [https://www.nuget.org/packages/SoundpadConnector](https://www.nuget.org/packages/SoundpadConnector) or install via NuGet console:
+Get the NuGet package [SoundpadConnector](https://www.nuget.org/packages/SoundpadConnector) or install via NuGet console:
 ```bash
-Install-Package SoundpadConnector
+PM> Install-Package SoundpadConnector
 ```
 
 ## QuickStart
@@ -59,13 +69,23 @@ namespace Examples {
 ```
 
 ## Documentation
-Read the [Docs](https://medokin.github.io/soundpad-connector/api/index.html) (WIP!)
+
+### Api docs
+Read the [Docs](https://medokin.github.io/soundpad-connector/api/index.html) online.
+This is still work-in-progress!
+
+### Build the docs
+1. Install [Chocolatey](https://chocolatey.org/)
+2. Install [Docfx]() via [Chocolatey](https://chocolatey.org/) `choco install docfx -y`
+3. Run `docfx docfx/docfx` in project root
+4. Browse the output in `/docs`
 
 ## Examples
 Browse the [Examples](examples).
 
 ## Limitations
-SoundpadConnector does **not work** with Soundpad's **Demo** version.
+- SoundpadConnector does **not work** with Soundpad's **Demo** version.
+- UWP is not supported. The sandbox refuses pipe connections.
 
 ## Contributing
 You may contribute in several ways like creating new features, fixing bugs, improving documentation and examples
