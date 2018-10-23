@@ -16,6 +16,7 @@
     * [Build the docs](#build-the-docs)
   * [Examples](#examples)
   * [Limitations](#limitations)
+  * [Troubleshooting](#troubleshooting)
   * [Contributing](#contributing)
   * [License](#license)
   * [Special thanks](#special-thanks)
@@ -86,6 +87,38 @@ Browse the [Examples](examples).
 ## Limitations
 - SoundpadConnector does **not work** with Soundpad's **Demo** version.
 - UWP is not supported. The sandbox refuses pipe connections.
+
+## Troubleshooting
+### Unexpected result when performing multiple calls?
+Soundpad calls are not transactional. You may get a response before the action happened in Soundpad. For example:
+```csharp
+var countResult = await soundpad.GetSoundFileCount();
+Console.WriteLine(countResult.Value); // 9
+
+await soundpad.AddSound(newSoundPath);
+
+var newCountResult = await soundpad.GetSoundFileCount();
+Console.WriteLine(newCountResult.Value); // 9 again, but we're expecting 10, right?
+```
+
+You can wait a certain amount of time between the calls, but that wont be safe eighter and makes you app slow.
+Another way is to loop until the value changes:
+
+```csharp
+var countResult = await soundpad.GetSoundFileCount();
+Console.WriteLine(countResult.Value); // 9
+
+await soundpad.AddSound(newSoundPath);
+
+while(true) {
+    var newCountResult = await soundpad.GetSoundFileCount();
+    
+    if(newCountResult.Value == countResult.Value) {
+        Console.WriteLine(newCountResult.Value); // 10
+        break;
+    }
+}
+```
 
 ## Contributing
 You may contribute in several ways like creating new features, fixing bugs, improving documentation and examples
