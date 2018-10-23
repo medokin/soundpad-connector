@@ -5,8 +5,12 @@ using SoundpadConnector.XML;
 
 namespace SoundpadConnector.Response
 {
+    /// <summary>
+    ///     Represents a <see cref="Soundlist"/> response
+    /// </summary>
     public class SoundlistResponse : ResponseBase<Soundlist>
     {
+        /// <inheritdoc />
         public override void Parse(string response)
         {
             if (response.StartsWith("R")) {

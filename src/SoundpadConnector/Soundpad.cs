@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using SoundpadConnector.Response;
 
 namespace SoundpadConnector {
+    /// <summary>
+    /// Main SoundpadConnector class.
+    ///  Contains all methods for connection handling and requests
+    /// </summary>
     public partial class Soundpad : IDisposable {
         private const string PipeName = "sp_remote_control";
 
@@ -169,6 +173,9 @@ namespace SoundpadConnector {
 
         #endregion
 
+        /// <summary>
+        /// Extented EventArgs for disconected event
+        /// </summary>
         public class OnDisconnectedEventArgs : EventArgs {
             public Exception Exception { get; set; }
         }
