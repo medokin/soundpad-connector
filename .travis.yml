@@ -1,3 +1,9 @@
 os: windows
 language: shell
-script: dotnet build src/SoundpadConnector.sln
+
+before_install:
+  - choco install docfx -y
+  
+script: 
+  - dotnet build src/SoundpadConnector.sln
+  - docfx docfx/docfx.json
