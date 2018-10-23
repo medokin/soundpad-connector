@@ -9,10 +9,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.ConnectionStatus.html",
-          "hash": "4Q60QtSeutTNPinCfuYCkw=="
+          "hash": "kD970NHXJeq1AtW/6LkifA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -21,10 +21,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.Response.BooleanResponse.html",
-          "hash": "AiHBVBquQx6PUhfXhp920g=="
+          "hash": "01mz6NmOTGxGQxOpPNSpKg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -33,10 +33,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.Response.IResponse.html",
-          "hash": "As1fJiQUUucggFs5XFo5/A=="
+          "hash": "QcHG5IS2/lFzjh7zmMWWKA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -45,10 +45,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.Response.NoContentResponse.html",
-          "hash": "YdnzUiuWUjJuzriURxFtLg=="
+          "hash": "TQktNW5IDNGfNS98qdhJ6g=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.Response.NumberResponse.html",
-          "hash": "ETxVCZ6kf/WT0SzEfv0y9w=="
+          "hash": "QmlX+PAurJ34BMh2ximPEg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -69,10 +69,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.Response.PlayStatus.html",
-          "hash": "64fsrJSOARR3Dv9GcClcxQ=="
+          "hash": "jz8t+bUcMJXOy3NkZFwY6w=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -81,10 +81,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.Response.PlayStatusResponse.html",
-          "hash": "V+2IggC3A9lspQKY5Dvt0w=="
+          "hash": "THtPWY++1Gk/xlIxBKqcIQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -93,10 +93,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.Response.ResponseBase-1.html",
-          "hash": "HX6xs+MD59zwhQfQ7HM5RQ=="
+          "hash": "jHDBdrVVPbsDDDEjWvA6bQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -105,10 +105,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.Response.SoundlistResponse.html",
-          "hash": "Dm8y2PTBgDlnnA9oCzPPCA=="
+          "hash": "kvSc99lSE40yr6xA25KbJA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -117,10 +117,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.Response.TextResponse.html",
-          "hash": "mnh9IMXFn43R+zQAGca41w=="
+          "hash": "45RMGtnO0b2ie/J9l1okZw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -129,10 +129,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.Response.html",
-          "hash": "UZdGh6J5mzhaaUj9+j3uNA=="
+          "hash": "bMKUaB3m6YZNfdYbbn/0zQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.Soundpad.OnDisconnectedEventArgs.html",
-          "hash": "m4GCgiteJow+RZ4XF3Dmpw=="
+          "hash": "oRHEdiQF5zTx7Qq2sUXcpg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -153,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.Soundpad.html",
-          "hash": "WXgZqT0zd7a/j4flMBlQqw=="
+          "hash": "qty6WfCMZ35Gk3Wfjn6xOg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -165,10 +165,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.XML.Sound.html",
-          "hash": "8QTR4xIbWpEJ35PMCC1SXg=="
+          "hash": "qe2wYIZBBGw7aZ09EcaDKQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -177,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.XML.Soundlist.html",
-          "hash": "GwtC6ldOBfLDrMbOoo7VRQ=="
+          "hash": "jc518hqcYEWXoHxwslIliw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -189,10 +189,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.XML.html",
-          "hash": "DVkXAEoCgRQryIcKGvczlQ=="
+          "hash": "zJoImpLikqOBsWy11X1Ulg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -201,10 +201,10 @@
       "output": {
         ".html": {
           "relative_path": "api/SoundpadConnector.html",
-          "hash": "Angb89Z9iWukkgBB0lOhLQ=="
+          "hash": "eRqOk5e8UrUf9feSxR1JeQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -213,10 +213,10 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "z6juThM+h3GzPzDsD/cBWQ=="
+          "hash": "npjP0mDRShbXSiWvRLclFg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -237,10 +237,10 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "/V5JJ2vc8NdMcBhMpB49sQ=="
+          "hash": "SSGYWqlLEbG8W1cLic1Qrg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -267,12 +267,34 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "images/arrow-left.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/arrow-left.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "index.md",
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "2kB/UlhCavXxj2hL2+S3fw=="
+          "hash": "e5YGp0oy2g3XAlB0QcxdVw=="
         }
       },
       "is_incremental": false,
@@ -298,11 +320,6 @@
         "incrementalPhase": "build"
       },
       "processors": {
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build"
-        },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
@@ -314,6 +331,11 @@
         },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build"
         }
       }

@@ -62,6 +62,19 @@ references:
   commentId: T:SoundpadConnector.Response.IResponse
   fullName: SoundpadConnector.Response.IResponse
   nameWithType: IResponse
+- uid: SoundpadConnector.Response.IResponse.IsSuccessful
+  name: IsSuccessful
+  href: api/SoundpadConnector.Response.IResponse.html#SoundpadConnector_Response_IResponse_IsSuccessful
+  commentId: P:SoundpadConnector.Response.IResponse.IsSuccessful
+  fullName: SoundpadConnector.Response.IResponse.IsSuccessful
+  nameWithType: IResponse.IsSuccessful
+- uid: SoundpadConnector.Response.IResponse.IsSuccessful*
+  name: IsSuccessful
+  href: api/SoundpadConnector.Response.IResponse.html#SoundpadConnector_Response_IResponse_IsSuccessful_
+  commentId: Overload:SoundpadConnector.Response.IResponse.IsSuccessful
+  isSpec: "True"
+  fullName: SoundpadConnector.Response.IResponse.IsSuccessful
+  nameWithType: IResponse.IsSuccessful
 - uid: SoundpadConnector.Response.IResponse.Parse(System.String)
   name: Parse(String)
   href: api/SoundpadConnector.Response.IResponse.html#SoundpadConnector_Response_IResponse_Parse_System_String_
@@ -403,19 +416,6 @@ references:
   isSpec: "True"
   fullName: SoundpadConnector.Soundpad.Dispose
   nameWithType: Soundpad.Dispose
-- uid: SoundpadConnector.Soundpad.DoSelectIndex(System.Int32)
-  name: DoSelectIndex(Int32)
-  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_DoSelectIndex_System_Int32_
-  commentId: M:SoundpadConnector.Soundpad.DoSelectIndex(System.Int32)
-  fullName: SoundpadConnector.Soundpad.DoSelectIndex(System.Int32)
-  nameWithType: Soundpad.DoSelectIndex(Int32)
-- uid: SoundpadConnector.Soundpad.DoSelectIndex*
-  name: DoSelectIndex
-  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_DoSelectIndex_
-  commentId: Overload:SoundpadConnector.Soundpad.DoSelectIndex
-  isSpec: "True"
-  fullName: SoundpadConnector.Soundpad.DoSelectIndex
-  nameWithType: Soundpad.DoSelectIndex
 - uid: SoundpadConnector.Soundpad.GetMainFrameTitleText
   name: GetMainFrameTitleText()
   href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_GetMainFrameTitleText
@@ -712,19 +712,19 @@ references:
   isSpec: "True"
   fullName: SoundpadConnector.Soundpad.RemoveSelectedEntries
   nameWithType: Soundpad.RemoveSelectedEntries
-- uid: SoundpadConnector.Soundpad.ResetAndHideSearch
-  name: ResetAndHideSearch()
-  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ResetAndHideSearch
-  commentId: M:SoundpadConnector.Soundpad.ResetAndHideSearch
-  fullName: SoundpadConnector.Soundpad.ResetAndHideSearch()
-  nameWithType: Soundpad.ResetAndHideSearch()
-- uid: SoundpadConnector.Soundpad.ResetAndHideSearch*
-  name: ResetAndHideSearch
-  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ResetAndHideSearch_
-  commentId: Overload:SoundpadConnector.Soundpad.ResetAndHideSearch
+- uid: SoundpadConnector.Soundpad.ResetSearch
+  name: ResetSearch()
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ResetSearch
+  commentId: M:SoundpadConnector.Soundpad.ResetSearch
+  fullName: SoundpadConnector.Soundpad.ResetSearch()
+  nameWithType: Soundpad.ResetSearch()
+- uid: SoundpadConnector.Soundpad.ResetSearch*
+  name: ResetSearch
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_ResetSearch_
+  commentId: Overload:SoundpadConnector.Soundpad.ResetSearch
   isSpec: "True"
-  fullName: SoundpadConnector.Soundpad.ResetAndHideSearch
-  nameWithType: Soundpad.ResetAndHideSearch
+  fullName: SoundpadConnector.Soundpad.ResetSearch
+  nameWithType: Soundpad.ResetSearch
 - uid: SoundpadConnector.Soundpad.SaveSoundlist
   name: SaveSoundlist()
   href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_SaveSoundlist
@@ -777,6 +777,19 @@ references:
   isSpec: "True"
   fullName: SoundpadConnector.Soundpad.Search
   nameWithType: Soundpad.Search
+- uid: SoundpadConnector.Soundpad.SelectIndex(System.Int32)
+  name: SelectIndex(Int32)
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_SelectIndex_System_Int32_
+  commentId: M:SoundpadConnector.Soundpad.SelectIndex(System.Int32)
+  fullName: SoundpadConnector.Soundpad.SelectIndex(System.Int32)
+  nameWithType: Soundpad.SelectIndex(Int32)
+- uid: SoundpadConnector.Soundpad.SelectIndex*
+  name: SelectIndex
+  href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_SelectIndex_
+  commentId: Overload:SoundpadConnector.Soundpad.SelectIndex
+  isSpec: "True"
+  fullName: SoundpadConnector.Soundpad.SelectIndex
+  nameWithType: Soundpad.SelectIndex
 - uid: SoundpadConnector.Soundpad.SelectNextHit
   name: SelectNextHit()
   href: api/SoundpadConnector.Soundpad.html#SoundpadConnector_Soundpad_SelectNextHit
