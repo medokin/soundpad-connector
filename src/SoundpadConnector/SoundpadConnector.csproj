@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageLicenseUrl>https://github.com/medokin/soundpad-connector/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl></RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>.NET Soundpad Connector - Remote control API - Soundpad Connector provides an API to programmatically interact with a local Soundpad instance.</Description>
+    <PackageProjectUrl>https://github.com/medokin/soundpad-connector</PackageProjectUrl>
+    <Authors>Nikodem Jaworski</Authors>
+    <PackageTags>sdk,soundpad,pipe,ipc</PackageTags>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,19 @@
+os: windows
+language: shell
+
+before_install:
+  - choco install docfx -y
+  
+script: 
+  - dotnet build src/SoundpadConnector.sln
+  - docfx docfx/docfx.json
+  
+  
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  local_dir: docs
+  on:
+    branch: master
