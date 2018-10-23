@@ -1,7 +1,4 @@
-
-<img src="images/SoundpadConnectorLogo.png" alt="Logo SoundpadConnector .NET" title="SoundpadConnector .NET" />
-
-<br>
+# SoundpadConnector .NET Docs
 
 SoundpadConnector provides an .NET API to programmatically interact with a local <a href="https://store.steampowered.com/app/629520/Soundpad/">Soundpad</a> instance.
 
@@ -78,7 +75,7 @@ This is still work-in-progress!
 ### Build the docs
 1. Install [Chocolatey](https://chocolatey.org/)
 2. Install [Docfx]() via [Chocolatey](https://chocolatey.org/) `choco install docfx -y`
-3. Run `docfx docfx/docfx` in project root
+3. Run `docfx docfx/docfx.json` in project root
 4. Browse the output in `/docs`
 
 ## Examples

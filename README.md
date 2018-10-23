@@ -78,7 +78,7 @@ This is still work-in-progress!
 ### Build the docs
 1. Install [Chocolatey](https://chocolatey.org/)
 2. Install [Docfx]() via [Chocolatey](https://chocolatey.org/) `choco install docfx -y`
-3. Run `docfx docfx/docfx` in project root
+3. Run `docfx docfx/docfx.json` in project root
 4. Browse the output in `/docs`
 
 ## Examples
