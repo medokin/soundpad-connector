@@ -5,6 +5,7 @@ environment:
     secure: efsNWEdE7IG6Kf9e4kQ3GwiIhKEfMrRLaagDyH48TKd0ofajmc7Rc8HlNJCpzuhD
 build_script:
   - ps: ./build.ps1
+skip_non_tags: true
 test: off # tests are run by build_script
 deploy_script:
 - ps: ./build.ps1 -Target Release
