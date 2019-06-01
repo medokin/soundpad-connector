@@ -6,7 +6,7 @@ namespace SoundpadConnector.XML
     [XmlRoot(ElementName = "Sound")]
     public class Sound {
         [XmlAttribute(AttributeName = "index")]
-        public string Index { get; set; }
+        public int Index { get; set; }
 
         [XmlAttribute(AttributeName = "url")]
         public string Url { get; set; }
