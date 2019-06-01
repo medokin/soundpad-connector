@@ -1,0 +1,10 @@
+﻿version: '{build}'
+image: Visual Studio 2017
+environment:
+  nuget_key:
+    secure: efsNWEdE7IG6Kf9e4kQ3GwiIhKEfMrRLaagDyH48TKd0ofajmc7Rc8HlNJCpzuhD
+build_script:
+  - ps: ./build.ps1
+test: off # tests are run by build_script
+deploy_script:
+- ps: ./build.ps1 -Target Release
