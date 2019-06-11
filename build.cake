@@ -26,13 +26,6 @@ Task("Build").Does(() =>
         Configuration = config
     }));
 
-Task("Test")
-    .IsDependentOn("Build")
-    .Does(() => DotNetCoreTest(srcDir, new DotNetCoreTestSettings {
-        Configuration = config,
-        NoBuild = true
-    }));
-
 Task("Pack")
     .IsDependentOn("SemVer")
     .Does(() => {
@@ -67,6 +60,5 @@ Task("Default")
     .IsDependentOn("SemVer")
     .IsDependentOn("Clean")
     .IsDependentOn("Build")
-    .IsDependentOn("Test");
 
 RunTarget(target);
