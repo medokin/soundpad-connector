@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using SoundpadConnector.CustomApi;
 using SoundpadConnector.Response;
 
 namespace SoundpadConnector {
@@ -329,6 +330,16 @@ namespace SoundpadConnector {
         /// <returns></returns>
         public async Task<TextResponse> GetVersion() {
             return await Send<TextResponse>("GetRemoteControlVersion()");
+        }
+
+        /// <summary>
+        ///     Loads a .spl Soundlist into Soundpad
+        /// </summary>
+        /// <returns></returns>
+        public async Task<NoContentResponse> LoadSoundlist(string path)
+        {
+            var loadSoundlist = new LoadSoundlist();
+            return await loadSoundlist.Perform(path);
         }
     }
 }
