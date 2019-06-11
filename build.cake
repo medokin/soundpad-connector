@@ -59,6 +59,6 @@ Task("Release")
 Task("Default")
     .IsDependentOn("SemVer")
     .IsDependentOn("Clean")
-    .IsDependentOn("Build")
+    .IsDependentOn("Build");
 
 RunTarget(target);
