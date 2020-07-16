@@ -4,7 +4,8 @@ using System.Xml.Serialization;
 namespace SoundpadConnector.XML
 {
     [XmlRoot(ElementName = "Sound")]
-    public class Sound {
+    public class Sound
+    {
         [XmlAttribute(AttributeName = "index")]
         public int Index { get; set; }
 

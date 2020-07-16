@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Text;
 using System.Xml.Serialization;
 
-namespace SoundpadConnector.XML {
+namespace SoundpadConnector.XML
+{
     [XmlRoot(ElementName = "Soundlist")]
-    public class Soundlist {
+    public class Soundlist
+    {
         [XmlAttribute(AttributeName = "rel")]
         public string Rel => "true";
 
@@ -12,4 +13,3 @@ namespace SoundpadConnector.XML {
         public List<Sound> Sounds { get; set; }
     }
 }
-
