@@ -2,7 +2,7 @@
 image: Visual Studio 2017
 environment:
   nuget_key:
-    secure: efsNWEdE7IG6Kf9e4kQ3GwiIhKEfMrRLaagDyH48TKd0ofajmc7Rc8HlNJCpzuhD
+    secure: oguZl00lM10ZBNInx/yyEdx3XqTJrLo4nllAiP8B2xW1MuwRuwcoYG95+lMTMjtV
 build_script:
   - ps: ./build.ps1
 skip_non_tags: true
