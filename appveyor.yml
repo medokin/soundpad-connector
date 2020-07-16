@@ -1,4 +1,4 @@
-﻿version: '{build}'
+version: '{build}'
 image: Visual Studio 2017
 environment:
   nuget_key:
@@ -6,6 +6,6 @@ environment:
 build_script:
   - ps: ./build.ps1
 skip_non_tags: true
-test: off # tests are run by build_script
+test: 'off'
 deploy_script:
-- ps: ./build.ps1 -Target Release
+  - ps: ./build.ps1 -Target Release
