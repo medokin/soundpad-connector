@@ -85,12 +85,12 @@ This is still work-in-progress!
 Browse the [Examples](examples).
 
 ## Limitations
-- SoundpadConnector does **not work** with Soundpad's **Demo** version.
-- UWP is not supported. The sandbox refuses pipe connections.
+- SoundpadConnector does **not work** with Soundpad's **Demo** version 3 and below.
+- UWP is not supported/tested. The sandbox refuses pipe connections. Users reported that it works from Windows 10 version 2004 and above.
 
 ## Troubleshooting
 ### Unexpected result when performing multiple calls?
-Soundpad calls are not transactional. You may get a response before the action happened in Soundpad. For example:
+Soundpad calls are not transactional. You may get a response before the action happens in Soundpad. For example:
 ```csharp
 var countResult = await soundpad.GetSoundFileCount();
 Console.WriteLine(countResult.Value); // 9
@@ -101,7 +101,7 @@ var newCountResult = await soundpad.GetSoundFileCount();
 Console.WriteLine(newCountResult.Value); // 9 again, but we're expecting 10, right?
 ```
 
-You can wait a certain amount of time between the calls, but that wont be safe eighter and makes you app slow.
+You can wait a certain amount of time between the calls, but that won't be safe either and makes your app slow.
 Another way is to loop until the value changes:
 
 ```csharp
