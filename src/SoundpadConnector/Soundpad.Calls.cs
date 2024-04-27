@@ -492,7 +492,7 @@ namespace SoundpadConnector
         }
 
         /// <summary>
-        ///     Return a category ba index
+        ///     Return a category by index
         /// </summary>
         /// <param name="index"></param>
         /// <param name="withSounds"></param>
@@ -501,6 +501,38 @@ namespace SoundpadConnector
         public async Task<CategoryResponse> GetCategory(int index, bool withSounds = false, bool withIcons = false)
         {
             return await Send<CategoryResponse>($"GetCategory({index}, {withSounds}, {withIcons})");
+        }
+
+        /// <summary>
+        ///    Plays a random sound
+        /// </summary>
+        /// <param name="renderLine"></param>
+        /// <param name="captureLine"></param>
+        /// <returns></returns>
+        public async Task<NoContentResponse> PlayRandomSound(bool renderLine, bool captureLine)
+        {
+            return await Send<NoContentResponse>($"DoPlayRandomSound({renderLine}, {captureLine})");
+        }
+
+        /// <summary>
+        ///   Plays a random sound from a category
+        /// </summary>
+        /// <param name="categoryIndex"></param>
+        /// <param name="renderLine"></param>
+        /// <param name="captureLine"></param>
+        /// <returns></returns>
+        public async Task<NoContentResponse> PlayRandomSoundFromCategory(int categoryIndex, bool renderLine, bool captureLine)
+        {
+            return await Send<NoContentResponse>($"DoPlayRandomSoundFromCategory({categoryIndex}, {renderLine}, {captureLine})");
+        }
+
+        /// <summary>
+        ///   Returns true if the client is using a trial version
+        /// </summary>
+        /// <returns></returns>
+        public async Task<BooleanResponse> IsTrial()
+        {
+            return await Send<BooleanResponse>("IsTrial()");
         }
 
         /// <summary>
