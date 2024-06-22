@@ -116,9 +116,19 @@ namespace SoundpadConnector {
                 await _pipe.WriteAsync(buffer, 0, buffer.Length);
 
                 var responseBuffer = new byte[_pipe.OutBufferSize];
-                await _pipe.ReadAsync(responseBuffer, 0, responseBuffer.Length);
+                var fullResponse = new byte[0];
+                var readBytes = 0;
+                do
+                {
+                    readBytes = await _pipe.ReadAsync(responseBuffer, 0, responseBuffer.Length);
+                    if (readBytes > 0)
+                    {
+                        Array.Resize(ref fullResponse, fullResponse.Length + readBytes);
+                        Array.Copy(responseBuffer, 0, fullResponse, fullResponse.Length - readBytes, readBytes);
+                    }
+                } while (readBytes > 0);
 
-                var responseText = Encoding.UTF8.GetString(responseBuffer).TrimEnd('\0');
+                var responseText = Encoding.UTF8.GetString(fullResponse).TrimEnd('\0');
 
                 var response = new TResponse();
                 response.Parse(responseText);
