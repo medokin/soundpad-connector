@@ -9,6 +9,8 @@
     <PackageProjectUrl>https://github.com/medokin/soundpad-connector</PackageProjectUrl>
     <Authors>Nikodem Jaworski</Authors>
     <PackageTags>sdk,soundpad,pipe,ipc</PackageTags>
+    <AssemblyVersion>1.4.1</AssemblyVersion>
+	  <Version>1.4.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
