@@ -89,19 +89,24 @@ namespace SoundpadConnector {
         /// </summary>
         /// <returns></returns>
         public async Task ConnectAsync() {
-            Connecting?.Invoke(this, EventArgs.Empty);
-            try {
-                await _pipe.ConnectAsync(ConnectionTimeout);
-            } catch {
-                if (AutoReconnect) {
+            while (true) {
+                Connecting?.Invoke(this, EventArgs.Empty);
+                try {
+                    await _pipe.ConnectAsync(ConnectionTimeout);
+                } catch (Exception e) {
+                    if (!AutoReconnect) {
+                        Disconnected?.Invoke(this, new OnDisconnectedEventArgs { Exception = e });
+                        throw;
+                    }
+                    ConnectionStatus = ConnectionStatus.Disconnected;
+                    StatusChanged?.Invoke(this, EventArgs.Empty);
                     await Task.Delay(ReconnectInterval);
-                    await ConnectAsync();
-
-                    return;
+                    continue;
                 }
-            }
 
-            Connected?.Invoke(this, EventArgs.Empty);
+                Connected?.Invoke(this, EventArgs.Empty);
+                return;
+            }
         }
 
         /// <summary>
@@ -197,7 +202,7 @@ namespace SoundpadConnector {
             ConnectionStatus = ConnectionStatus.Disconnected;
             StatusChanged?.Invoke(this, eventArgs);
 
-            if (eventArgs.Exception != null) await ConnectAsync();
+            if (AutoReconnect && eventArgs.Exception != null) await ConnectAsync();
         }
 
         #endregion
