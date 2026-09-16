@@ -42,17 +42,32 @@ The maintenance environment has a signed Steam Soundpad 4.0.30 executable at `C:
 
 UWP and demo/trial editions are outside the verified matrix. `GetVersion` reads the remote control API version; `GetSoundpadVersion` reads the product version. Text replies matching the reserved protocol status form (`R-` plus three digits, optionally followed by a colon) are reported as errors, not values. Caller `WaitAsync` cancellation does not cancel a command by itself: disconnect/dispose when abandoning it.
 
-## Controlled manual publication
+## Publishing setup
 
-Publication requires a separate maintainer decision. Nothing in the merged workflows publishes packages, creates releases or deploys documentation.
+The **NuGet publishing** workflow (`.github/workflows/nuget-publish.yml`) supports the proposed 1.5.0 release. A published, non-prerelease GitHub release for `v1.5.0` triggers publishing; other releases are ignored. Manual dispatch is a read-only dry run: it verifies/uploads the candidate but never requests NuGet credentials or publishes. Push/PR CI and the Release candidate workflow remain read-only. No workflow creates releases/tags or deploys documentation.
 
-1. Review the candidate workflow result for the exact intended commit, compatibility notes and real-Soundpad test decision. Record tested product versions/distributions or an explicit acceptance of the unavailable checks.
-2. Approve the version and release notes. Update the source version and README installation guidance to describe the approved stable release. The restored relative banner works on GitHub and in local docs, but NuGet.org does not render relative images: use an absolute image URL from an [allowed domain](https://learn.microsoft.com/en-us/nuget/nuget-org/package-readme-on-nuget-org#allowed-domains-for-images) and preview the package README before publishing. Review that change and merge only with green CI. Rebuild the candidate from that exact commit; do not publish an earlier development-source artifact.
-3. Download/inspect the approved package and verify its recorded SHA256. Run the candidate checks on the final checkout if building locally. Use a NuGet credential scoped to this package; never commit it.
-4. Only after explicit publication approval, run the command below from that final checkout. Confirm the published package version/content on nuget.org. Create the v1.5.0 tag and GitHub release for the same approved commit, with finalized notes. Do not reuse a tag for a different commit.
+One-time setup in the owning NuGet account, [Trusted Publishing](https://www.nuget.org/account/trustedpublishing):
 
-```powershell
-dotnet nuget push artifacts/SoundpadConnector.1.5.0.nupkg --source https://api.nuget.org/v3/index.json --api-key $env:NUGET_API_KEY
-```
+- Policy name: `soundpad-connector` (a descriptive label).
+- Package owner: `medokin`; provider: GitHub Actions.
+- Repository owner: `medokin`; repository: `soundpad-connector`.
+- Workflow file: `nuget-publish.yml` (filename only); environment: `nuget`.
+- Allow **Push only new package versions**, with exact package pattern `SoundpadConnector`. Leave unlist/relist disabled.
+
+The protected GitHub `nuget` environment requires approval from `medokin`, permits only tag `v1.5.0`, and disallows administrator bypass. Self-approval is allowed because this repository has one designated release approver, but approval is still an explicit manual step. Do not remove these protections to make a failed deployment pass. For later release versions, update and review the workflow, release validation, candidate checks and allowed environment tag together.
+
+Authentication uses pinned [NuGet/login](https://github.com/NuGet/login) and [Trusted Publishing](https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing), not a stored long-lived API key. Only the publishing job has `id-token: write`. It downloads the immutable artifact from its own successful verification job, requires an exact package/checksum manifest, and obtains the short-lived NuGet key immediately before pushing the one package. No rebuild, wildcard push, duplicate skipping, or credentials in command-line arguments.
+
+The release preflight rejects any tag other than `v1.5.0`, a project version other than stable `1.5.0`, a README still referencing `1.5.0-dev` or missing the `dotnet add package SoundpadConnector --version 1.5.0` installation command, and a commit outside `origin/master` history. Source remains development-versioned now, so publication intentionally cannot proceed yet. The safe dry run verifies the build path only; it does not prove NuGet authentication, account policy activation, or an actual successful push.
+
+## Controlled publication
+
+Publication requires a separate maintainer decision, even after publishing infrastructure is merged.
+
+1. Review the candidate result for the exact intended commit, compatibility notes and real-Soundpad test decision. Record tested product versions/distributions or explicit acceptance of the unavailable checks. Complete the account/environment setup above.
+2. Approve the version and release notes. Update source version to stable `1.5.0` and README installation guidance to describe that approved release. The banner now uses an absolute, commit-pinned URL from an [allowed NuGet image domain](https://learn.microsoft.com/en-us/nuget/nuget-org/package-readme-on-nuget-org#allowed-domains-for-images). Review and merge the stable guidance/version change only with green CI. Preview the package README before publication; do not submit a NuGet upload merely to preview it.
+3. Rebuild and inspect the candidate from the final approved commit. Verify its recorded SHA256 and package contents. Do not publish an earlier development-source artifact.
+4. Only after explicit publication approval, create tag `v1.5.0` and publish a non-prerelease GitHub release for that same approved master commit. This triggers the publishing workflow. A draft does not publish. Do not reuse or move a tag to a different commit.
+5. Inspect that run's verification result and exact package artifact, then approve the `nuget` environment deployment. After the push, confirm the version/content and indexing status on NuGet.org. NuGet authentication and push are only verified by that approved deployment, not by a dry run. Failed or duplicate-version pushes fail visibly; inspect the existing NuGet version before any retry.
 
 Documentation deployment is a separate decision; local/CI documentation generation does not refresh GitHub Pages. Until publication, README examples and lifecycle guarantees describe current source, not the existing NuGet 1.3.1 package.

@@ -1,7 +1,7 @@
 # SoundpadConnector .NET
 
 <p align="center">
-   <img src="docfx/images/SoundpadConnectorLogo.png" alt="Logo SoundpadConnector .NET" title="SoundpadConnector .NET" />
+   <img src="https://raw.githubusercontent.com/medokin/soundpad-connector/4a9daae40d3c09dc11830c139ac89bcadd222207/docfx/images/SoundpadConnectorLogo.png" alt="Logo SoundpadConnector .NET" title="SoundpadConnector .NET" />
 </p>
 
 SoundpadConnector provides a .NET API to control a local [Soundpad](https://www.leppsoft.com/soundpad/) instance.
@@ -109,7 +109,7 @@ Install the SDK selected by `global.json` (10.0.401 or a newer patch in the same
 ./build-docs.ps1
 ```
 
-The first script restores and audits dependencies, builds both solutions in Release, runs safe tests, and packs `artifacts/SoundpadConnector.1.5.0-dev.nupkg`. Known dependency vulnerabilities fail restore. GitHub Actions verifies pushes/PRs and uploads build artifacts without publishing packages or documentation.
+The first script restores and audits dependencies, builds both solutions in Release, runs safe tests, and packs `artifacts/SoundpadConnector.1.5.0-dev.nupkg`. Known dependency vulnerabilities fail restore. Push/PR CI uploads build artifacts without publishing. NuGet publishing is separate: an approved stable `v1.5.0` GitHub release triggers verification and a protected publishing job. Manual runs of the publishing workflow only verify and never publish. See the release preparation checklist for setup and approval requirements. No workflow deploys documentation.
 
 Normal tests do not require Soundpad. Parser and transport tests use unique isolated pipes, bounded waits and disposable connections. Example polling tests do not contact Soundpad.
 
