@@ -80,6 +80,19 @@ namespace SoundpadConnector.Tests
         }
 
         [Fact]
+        public async Task ReadsBytePipeResponseWithDefaultBufferSize()
+        {
+            await using var fixture = await PipeFixture.ConnectAsync(bufferSize: 0);
+            using var soundpad = new Soundpad(fixture.Client);
+            var serve = RespondAsync(fixture, "GetRemoteControlVersion()", "1.1.2");
+
+            var response = await soundpad.GetVersion().WaitAsync(fixture.Token);
+            await serve;
+
+            Assert.Equal("1.1.2", response.Value);
+        }
+
+        [Fact]
         public async Task PreservesLargeLegacyBytePipeResponses()
         {
             await using var fixture = await PipeFixture.ConnectAsync(bufferSize: 16384);

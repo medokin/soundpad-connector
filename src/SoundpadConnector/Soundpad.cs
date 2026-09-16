@@ -18,7 +18,13 @@ namespace SoundpadConnector {
         private const string PipeName = "sp_remote_control";
         private const uint MessagePipeType = 4;
 
-        private readonly NamedPipeClientStream _pipe;
+        private NamedPipeClientStream _pipe;
+        private readonly Func<NamedPipeClientStream> _pipeFactory;
+        private readonly object _lifecycleLock = new object();
+        private readonly SemaphoreSlim _connectMutex = new SemaphoreSlim(1);
+        private CancellationTokenSource _connectionCancellation = new CancellationTokenSource();
+        private bool _pipeClosed;
+        private bool _disposed;
 
         private readonly SemaphoreSlim _mutex = new SemaphoreSlim(1);
 
@@ -47,21 +53,30 @@ namespace SoundpadConnector {
         /// </summary>
         public ConnectionStatus ConnectionStatus = ConnectionStatus.Disconnected;
 
-        public Soundpad() : this(new NamedPipeClientStream(".", PipeName, PipeDirection.InOut)) {
+        public Soundpad() : this(() => new NamedPipeClientStream(".", PipeName, PipeDirection.InOut, PipeOptions.Asynchronous)) {
         }
 
-        internal Soundpad(NamedPipeClientStream pipe) {
+        internal Soundpad(NamedPipeClientStream pipe) : this(() => pipe) {
+        }
+
+        internal Soundpad(Func<NamedPipeClientStream> pipeFactory) {
             Connected += OnConnected;
             Disconnected += OnDisconnected;
             Connecting += OnConnecting;
             StatusChanged += OnStatusChanged;
 
-            _pipe = pipe;
+            _pipeFactory = pipeFactory;
+            _pipe = pipeFactory();
         }
 
         /// <inheritdoc />
         public void Dispose() {
-            _pipe?.Dispose();
+            lock (_lifecycleLock) {
+                if (_disposed) return;
+                _disposed = true;
+                Disconnect();
+                _connectionCancellation.Dispose();
+            }
         }
 
         /// <summary>
@@ -89,22 +104,56 @@ namespace SoundpadConnector {
         /// </summary>
         /// <returns></returns>
         public async Task ConnectAsync() {
+            CancellationToken token;
+            lock (_lifecycleLock) {
+                if (_disposed) throw new ObjectDisposedException(nameof(Soundpad));
+                if (_connectionCancellation.IsCancellationRequested) {
+                    _connectionCancellation.Dispose();
+                    _connectionCancellation = new CancellationTokenSource();
+                }
+                token = _connectionCancellation.Token;
+            }
+
+            await _connectMutex.WaitAsync(token);
+            try {
+                token.ThrowIfCancellationRequested();
+                if (_pipe.IsConnected) return;
+                await ConnectCoreAsync(token);
+            } finally {
+                _connectMutex.Release();
+            }
+        }
+
+        private async Task ConnectCoreAsync(CancellationToken token) {
             while (true) {
+                NamedPipeClientStream pipe;
+                lock (_lifecycleLock) {
+                    token.ThrowIfCancellationRequested();
+                    if (_pipeClosed) {
+                        _pipe = _pipeFactory();
+                        _pipeClosed = false;
+                    }
+                    pipe = _pipe;
+                }
                 Connecting?.Invoke(this, EventArgs.Empty);
                 try {
-                    await _pipe.ConnectAsync(ConnectionTimeout);
+                    await pipe.ConnectAsync(ConnectionTimeout, token);
                 } catch (Exception e) {
+                    token.ThrowIfCancellationRequested();
                     if (!AutoReconnect) {
                         Disconnected?.Invoke(this, new OnDisconnectedEventArgs { Exception = e });
                         throw;
                     }
                     ConnectionStatus = ConnectionStatus.Disconnected;
                     StatusChanged?.Invoke(this, EventArgs.Empty);
-                    await Task.Delay(ReconnectInterval);
+                    await Task.Delay(ReconnectInterval, token);
                     continue;
                 }
 
-                Connected?.Invoke(this, EventArgs.Empty);
+                lock (_lifecycleLock) {
+                    token.ThrowIfCancellationRequested();
+                    Connected?.Invoke(this, EventArgs.Empty);
+                }
                 return;
             }
         }
@@ -113,32 +162,34 @@ namespace SoundpadConnector {
         ///     Disconnects from Soundpad
         /// </summary>
         public void Disconnect() {
-            if (_pipe.IsConnected)
-                _pipe.Close();
-
-            _pipe.Dispose();
-
-            Disconnected?.Invoke(this, new OnDisconnectedEventArgs());
+            lock (_lifecycleLock) {
+                if (_pipeClosed && _connectionCancellation.IsCancellationRequested) return;
+                _connectionCancellation.Cancel();
+                _pipe.Dispose();
+                _pipeClosed = true;
+                Disconnected?.Invoke(this, new OnDisconnectedEventArgs());
+            }
         }
 
-        private async Task<TResponse> Send<TResponse>(string request) where TResponse : IResponse, new() {
-            await _mutex.WaitAsync();
+        private async Task<TResponse> Send<TResponse>(string request, CancellationToken token = default) where TResponse : IResponse, new() {
+            await _mutex.WaitAsync(token);
             try {
+                var pipe = _pipe;
                 var buffer = Encoding.UTF8.GetBytes(request);
 
-                await _pipe.WriteAsync(buffer, 0, buffer.Length);
+                await pipe.WriteAsync(buffer, 0, buffer.Length, token);
 
-                var messageMode = IsMessagePipe();
-                if (messageMode) _pipe.ReadMode = PipeTransmissionMode.Message;
+                var messageMode = IsMessagePipe(pipe);
+                if (messageMode) pipe.ReadMode = PipeTransmissionMode.Message;
 
-                var responseBuffer = new byte[messageMode ? 4096 : _pipe.OutBufferSize];
+                var responseBuffer = new byte[messageMode ? 4096 : Math.Max(4096, pipe.OutBufferSize)];
                 string responseText;
                 using (var responseBytes = new MemoryStream()) {
                     do {
-                        var count = await _pipe.ReadAsync(responseBuffer, 0, responseBuffer.Length);
+                        var count = await pipe.ReadAsync(responseBuffer, 0, responseBuffer.Length, token);
                         if (count == 0) throw new EndOfStreamException("Soundpad disconnected before returning a response.");
                         responseBytes.Write(responseBuffer, 0, count);
-                    } while (messageMode && !_pipe.IsMessageComplete);
+                    } while (messageMode && !pipe.IsMessageComplete);
 
                     responseText = Encoding.UTF8.GetString(responseBytes.ToArray()).TrimEnd('\0');
                 }
@@ -152,23 +203,40 @@ namespace SoundpadConnector {
             }
         }
 
-        private async void DoPoll() {
-            while (ConnectionStatus == ConnectionStatus.Connected) {
+        private async Task DoPollAsync(NamedPipeClientStream pipe, CancellationToken token) {
+            while (!token.IsCancellationRequested) {
                 try {
-                    await IsAlive();
+                    await Send<NoContentResponse>("IsAlive()", token);
+                    await Task.Delay(PollingInterval, token);
+                } catch (Exception) when (token.IsCancellationRequested) {
+                    return;
                 } catch (Exception e) {
-                    Disconnected?.Invoke(this, new OnDisconnectedEventArgs {
-                        Exception = e
-                    });
+                    try {
+                        await _connectMutex.WaitAsync(token);
+                        try {
+                            lock (_lifecycleLock) {
+                                token.ThrowIfCancellationRequested();
+                                if (_pipe != pipe) return;
+                                pipe.Dispose();
+                                _pipeClosed = true;
+                                Disconnected?.Invoke(this, new OnDisconnectedEventArgs { Exception = e });
+                            }
+                            if (!AutoReconnect) return;
+                            await Task.Delay(ReconnectInterval, token);
+                            await ConnectCoreAsync(token);
+                        } finally {
+                            _connectMutex.Release();
+                        }
+                    } catch (OperationCanceledException) when (token.IsCancellationRequested) {
+                    }
+                    return;
                 }
-
-                await Task.Delay(PollingInterval);
             }
         }
 
-        private bool IsMessagePipe() {
+        private static bool IsMessagePipe(NamedPipeClientStream pipe) {
             // NamedPipeClientStream.TransmissionMode can return its cached byte mode instead of the server's type.
-            if (!GetNamedPipeInfo(_pipe.SafePipeHandle, out var flags, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero))
+            if (!GetNamedPipeInfo(pipe.SafePipeHandle, out var flags, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero))
                 throw new IOException("Unable to inspect the Soundpad pipe.", new Win32Exception(Marshal.GetLastWin32Error()));
 
             return (flags & MessagePipeType) != 0;
@@ -182,27 +250,24 @@ namespace SoundpadConnector {
         private void OnStatusChanged(object sender, EventArgs e) {
         }
 
-        private async void OnConnecting(object sender, EventArgs eventArgs) {
-            await Task.Delay(0);
-
+        private void OnConnecting(object sender, EventArgs eventArgs) {
             ConnectionStatus = ConnectionStatus.Connecting;
             StatusChanged?.Invoke(this, eventArgs);
         }
 
-        private async void OnConnected(object sender, EventArgs eventArgs) {
-            await Task.Delay(0);
-
+        private void OnConnected(object sender, EventArgs eventArgs) {
+            var pipe = _pipe;
+            var token = _connectionCancellation.Token;
             ConnectionStatus = ConnectionStatus.Connected;
             StatusChanged?.Invoke(this, eventArgs);
 
-            DoPoll();
+            if (!token.IsCancellationRequested) _ = DoPollAsync(pipe, token);
         }
 
-        private async void OnDisconnected(object sender, OnDisconnectedEventArgs eventArgs) {
+        private void OnDisconnected(object sender, OnDisconnectedEventArgs eventArgs) {
             ConnectionStatus = ConnectionStatus.Disconnected;
             StatusChanged?.Invoke(this, eventArgs);
 
-            if (AutoReconnect && eventArgs.Exception != null) await ConnectAsync();
         }
 
         #endregion
