@@ -1,6 +1,6 @@
-# 1.5.0 release preparation
+# 1.5.0 release
 
-Status: provisional candidate, not published or approved for publication. Source remains `1.5.0-dev`. Additive public APIs supersede the earlier 1.4.1 patch proposal with a 1.5.0 minor candidate relative to GitHub v1.4.0. The library keeps `netstandard2.0` and existing public methods. The latest published NuGet package observed during maintenance is 1.3.1; publishing this candidate would also deliver the V4 APIs already present in GitHub v1.4.0.
+Release version: `1.5.0`. The owner authorized publication on 2026-09-16; source is stable-versioned. Verification and publication results are recorded in [#32](https://github.com/medokin/soundpad-connector/issues/32). Additive public APIs make this a minor release relative to GitHub v1.4.0 rather than the earlier 1.4.1 patch proposal. The library keeps `netstandard2.0` and existing public methods. NuGet's previous published version was 1.3.1; this release also delivers the V4 APIs already present in GitHub v1.4.0.
 
 ## Candidate verification
 
@@ -14,9 +14,9 @@ This builds both solutions with candidate version 1.5.0, runs safe tests, genera
 
 Package checks confirm MIT/readme/version metadata, the single `netstandard2.0` library, matching packaged/built DLL bytes and the included README. The script writes the candidate and SHA256 checksum to `artifacts`; it neither publishes nor changes the source version. Generated baseline directories are retained under `artifacts` for inspection. The **Release candidate** workflow runs these checks on PRs or manual dispatch and uploads these files plus this document. It has read-only repository permissions, no publishing credentials, and no tag trigger.
 
-Regular CI separately verifies the default development package and documentation. Known NuGet vulnerabilities fail restore. Safe tests do not contact Soundpad.
+Regular CI separately verifies the default package and documentation. Known NuGet vulnerabilities fail restore. Safe tests do not contact Soundpad.
 
-## Draft release notes
+## Release notes
 
 - Preserve complete message-mode pipe responses, including large XML and split UTF-8 characters, without waiting for server EOF or consuming a following message.
 - Correct successful numeric results and XML error handling.
@@ -32,7 +32,7 @@ Thanks to @itsameshaw for investigating large responses in [#15](https://github.
 
 ## Compatibility and remaining checks
 
-The maintenance environment has a signed Steam Soundpad 4.0.30 executable at `C:/Program Files (x86)/Steam/steamapps/common/Soundpad/Soundpad.exe`. The earlier installation-absence conclusion was incorrect: registry association absence did not imply installation absence. The help dialog confirms seek and category playback, but no real pipe call, large soundlist, spaced-path load, sequential/reconnect call, or V4 command was smoke-tested. Metadata parsing tests use synthetic XML, not captured native responses; color encoding and category-response metadata remain unconfirmed. The two existing opt-in integration tests replace a soundlist and are not a complete smoke matrix. Before publication, explicitly decide whether to obtain that coverage or accept these limits. Only use a disposable Soundpad session when testing mutating commands.
+The maintenance environment has a signed Steam Soundpad 4.0.30 executable at `C:/Program Files (x86)/Steam/steamapps/common/Soundpad/Soundpad.exe`. The earlier installation-absence conclusion was incorrect: registry association absence did not imply installation absence. The help dialog confirms seek and category playback, but no real pipe call, large soundlist, spaced-path load, sequential/reconnect call, or V4 command was smoke-tested. Metadata parsing tests use synthetic XML, not captured native responses; color encoding and category-response metadata remain unconfirmed. The two existing opt-in integration tests replace a soundlist and are not a complete smoke matrix. This release proceeds with the documented isolated-test coverage under the owner's publication authorization; it does not claim real-instance verification. Only use a disposable Soundpad session when testing mutating commands.
 
 - [#2](https://github.com/medokin/soundpad-connector/issues/2): the obsolete Travis pipeline was retired and replaced by verified GitHub Actions. This supersedes the old CI setup; it does not claim to fix the upstream Travis defect. The historical issue remains open.
 - [#10](https://github.com/medokin/soundpad-connector/issues/10): quoted path encoding is tested at the launch boundary; real soundlist loading remains unconfirmed.
@@ -44,7 +44,7 @@ UWP and demo/trial editions are outside the verified matrix. `GetVersion` reads 
 
 ## Publishing setup
 
-The **NuGet publishing** workflow (`.github/workflows/nuget-publish.yml`) supports the proposed 1.5.0 release. A published, non-prerelease GitHub release for `v1.5.0` triggers publishing; other releases are ignored. Manual dispatch is a read-only dry run: it verifies/uploads the candidate but never requests NuGet credentials or publishes. Push/PR CI and the Release candidate workflow remain read-only. No workflow creates releases/tags or deploys documentation.
+The **NuGet publishing** workflow (`.github/workflows/nuget-publish.yml`) supports the 1.5.0 release. A published, non-prerelease GitHub release for `v1.5.0` triggers publishing; other releases are ignored. Manual dispatch is a read-only dry run: it verifies/uploads the candidate but never requests NuGet credentials or publishes. Push/PR CI and the Release candidate workflow remain read-only. No workflow creates releases/tags or deploys documentation.
 
 One-time setup in the owning NuGet account, [Trusted Publishing](https://www.nuget.org/account/trustedpublishing):
 
@@ -58,7 +58,7 @@ The protected GitHub `nuget` environment requires approval from `medokin`, permi
 
 Authentication uses pinned [NuGet/login](https://github.com/NuGet/login) and [Trusted Publishing](https://learn.microsoft.com/en-us/nuget/nuget-org/trusted-publishing), not a stored long-lived API key. Only the publishing job has `id-token: write`. It downloads the immutable artifact from its own successful verification job, requires an exact package/checksum manifest, and obtains the short-lived NuGet key immediately before pushing the one package. No rebuild, wildcard push, duplicate skipping, or credentials in command-line arguments.
 
-The release preflight rejects any tag other than `v1.5.0`, a project version other than stable `1.5.0`, a README still referencing `1.5.0-dev` or missing the `dotnet add package SoundpadConnector --version 1.5.0` installation command, and a commit outside `origin/master` history. Source remains development-versioned now, so publication intentionally cannot proceed yet. The safe dry run verifies the build path only; it does not prove NuGet authentication, account policy activation, or an actual successful push.
+The release preflight rejects any tag other than `v1.5.0`, a project version other than stable `1.5.0`, a README still referencing the development version or missing the `dotnet add package SoundpadConnector --version 1.5.0` installation command, and a commit outside `origin/master` history. Source and guidance now describe stable `1.5.0`; publication still requires all verification and approval gates below. The safe dry run verifies the build path only; it does not prove NuGet authentication or an actual successful push. The owner created the scoped NuGet policy and its Active status was confirmed during setup in [#30](https://github.com/medokin/soundpad-connector/issues/30).
 
 ## Controlled publication
 
@@ -70,4 +70,4 @@ Publication requires a separate maintainer decision, even after publishing infra
 4. Only after explicit publication approval, create tag `v1.5.0` and publish a non-prerelease GitHub release for that same approved master commit. This triggers the publishing workflow. A draft does not publish. Do not reuse or move a tag to a different commit.
 5. Inspect that run's verification result and exact package artifact, then approve the `nuget` environment deployment. After the push, confirm the version/content and indexing status on NuGet.org. NuGet authentication and push are only verified by that approved deployment, not by a dry run. Failed or duplicate-version pushes fail visibly; inspect the existing NuGet version before any retry.
 
-Documentation deployment is a separate decision; local/CI documentation generation does not refresh GitHub Pages. Until publication, README examples and lifecycle guarantees describe current source, not the existing NuGet 1.3.1 package.
+Documentation deployment is a separate decision; local/CI documentation generation does not refresh GitHub Pages. README examples and lifecycle guarantees describe `1.5.0`, not older NuGet 1.3.1.
