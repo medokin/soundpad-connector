@@ -10,7 +10,7 @@ function Invoke-DotNet {
 
 Push-Location $PSScriptRoot
 try {
-    $version = '1.4.1'
+    $version = '1.5.0'
     $baselineCommit = 'fbc5b8c32a2519370b1688abbdf5321d5d810162'
     ./build.ps1 -Version $version
     ./build-docs.ps1
@@ -30,8 +30,8 @@ try {
     Invoke-DotNet build (Join-Path $baselineRoot 'src/SoundpadConnector/SoundpadConnector.csproj') --configuration Release '-p:Version=1.4.0' '-p:GeneratePackageOnBuild=false'
     $baselineAssembly = Join-Path $baselineRoot 'src/SoundpadConnector/bin/Release/netstandard2.0/SoundpadConnector.dll'
     $assembly = Join-Path $PSScriptRoot 'src/SoundpadConnector/bin/Release/netstandard2.0/SoundpadConnector.dll'
-    # CP0003 compares assembly versions; the planned patch version intentionally changes 1.4.0 to 1.4.1.
-    Invoke-DotNet apicompat -l $baselineAssembly -r $assembly --strict-mode --enable-rule-cannot-change-parameter-name --noWarn CP0003
+    # Compare baseline to candidate for backwards compatibility, allowing additive APIs and the version bump.
+    Invoke-DotNet apicompat -l $baselineAssembly -r $assembly --enable-rule-cannot-change-parameter-name --enable-rule-attributes-must-match --noWarn CP0003
 
     $package = Join-Path $PSScriptRoot "artifacts/SoundpadConnector.$version.nupkg"
     $zip = [IO.Compression.ZipFile]::OpenRead($package)
@@ -51,7 +51,7 @@ try {
         if ($packedHash -ne (Get-FileHash -LiteralPath $assembly -Algorithm SHA256).Hash) {
             throw 'Packaged assembly differs from the verified Release build'
         }
-        if ([Reflection.AssemblyName]::GetAssemblyName($assembly).Version.ToString() -ne '1.4.1.0') {
+        if ([Reflection.AssemblyName]::GetAssemblyName($assembly).Version.ToString() -ne '1.5.0.0') {
             throw 'Candidate assembly has an unexpected version'
         }
         $readmeReader = [IO.StreamReader]::new($zip.GetEntry('README.md').Open())

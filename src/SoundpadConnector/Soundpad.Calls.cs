@@ -28,6 +28,15 @@ namespace SoundpadConnector
             return await Send<NoContentResponse>($"DoPlaySound({index}, {renderLine}, {captureLine})");
         }
 
+        /// <param name="categoryIndex">Use -1 for the selected category.</param>
+        /// <param name="soundIndex">One-based position within the category, not the global sound index.</param>
+        /// <param name="renderLine">Play on speakers.</param>
+        /// <param name="captureLine">Play on microphone.</param>
+        public async Task<NoContentResponse> PlaySoundFromCategory(int categoryIndex, int soundIndex, bool renderLine, bool captureLine)
+        {
+            return await Send<NoContentResponse>($"DoPlaySoundFromCategory({categoryIndex}, {soundIndex}, {renderLine}, {captureLine})");
+        }
+
         /// <summary>
         ///     Plays previous sound
         /// </summary>
@@ -72,6 +81,12 @@ namespace SoundpadConnector
         public async Task<NoContentResponse> Jump(int milliseconds)
         {
             return await Send<NoContentResponse>($"DoJumpMs({milliseconds})");
+        }
+
+        /// <summary>Seeks to an absolute playback position. Soundpad handles zero and negative values.</summary>
+        public async Task<NoContentResponse> Seek(int milliseconds)
+        {
+            return await Send<NoContentResponse>($"DoSeekMs({milliseconds})");
         }
 
         /// <summary>
@@ -239,7 +254,7 @@ namespace SoundpadConnector
         /// <returns></returns>
         public async Task<TextResponse> GetMainFrameTitleText()
         {
-            return await Send<TextResponse>("GetMainFrameTitleText()");
+            return await Send<TextResponse>("GetTitleText()");
         }
 
         /// <summary>
@@ -371,6 +386,12 @@ namespace SoundpadConnector
         public async Task<TextResponse> GetVersion()
         {
             return await Send<TextResponse>("GetRemoteControlVersion()");
+        }
+
+        /// <summary>Gets the Soundpad product version, not the remote control interface version.</summary>
+        public async Task<TextResponse> GetSoundpadVersion()
+        {
+            return await Send<TextResponse>("GetVersion()");
         }
 
         /// <summary>

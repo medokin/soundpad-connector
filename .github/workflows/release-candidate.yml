@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   candidate:
-    name: Verify 1.4.1 candidate without publishing
+    name: Verify 1.5.0 candidate without publishing
     runs-on: windows-latest
     timeout-minutes: 15
     env:
@@ -27,9 +27,9 @@ jobs:
         run: ./verify-release.ps1
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: soundpadconnector-1.4.1-candidate
+          name: soundpadconnector-1.5.0-candidate
           path: |
-            artifacts/SoundpadConnector.1.4.1.nupkg
-            artifacts/SoundpadConnector.1.4.1.nupkg.sha256
+            artifacts/SoundpadConnector.1.5.0.nupkg
+            artifacts/SoundpadConnector.1.5.0.nupkg.sha256
             RELEASE.md
           if-no-files-found: error
