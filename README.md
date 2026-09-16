@@ -133,11 +133,24 @@ The repository's `NuGet.Config` uses nuget.org without inheriting machine-specif
 Run these commands from the repository root:
 
 ```powershell
+./build.ps1
+```
+
+This restores both solutions, audits all dependencies, builds Release artifacts, runs safe tests,
+and creates the development NuGet package in `artifacts`. It temporarily disables live tests
+even when integration-test opt-in is set in your environment. Individual commands are:
+
+```powershell
 dotnet build src/SoundpadConnector.sln --configuration Release
 dotnet build examples/Examples.sln --configuration Release
 dotnet test src/SoundpadConnector.sln --configuration Release --no-build
 dotnet list src/SoundpadConnector.sln package --vulnerable --include-transitive
+dotnet pack src/SoundpadConnector/SoundpadConnector.csproj --configuration Release --no-build --output artifacts
 ```
+
+Package versions come from the library project file. The current unreleased version is
+`1.4.1-dev`; build and package commands do not publish it. GitHub Actions verifies pushes
+and pull requests and uploads a package artifact. Known dependency vulnerabilities fail restore.
 
 Ordinary test runs execute parser and isolated named-pipe tests without Soundpad installed.
 Real-Soundpad integration tests are skipped unless `SOUNDPAD_INTEGRATION_TESTS` is exactly `1`.
