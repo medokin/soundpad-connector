@@ -169,6 +169,11 @@ try {
 The fake pipe fixture uses unique pipe names, bounded waits, and disposable connections.
 Its response-delivery tests exercise parsers, not the connector's transport framing.
 
+Connector transport tests also exercise actual requests over isolated Windows message pipes,
+including large responses, split UTF-8 characters, response separation, and disconnects.
+Message-pipe responses are read to the end of their message, not to connection closure.
+The legacy single-read behavior is retained for byte pipes, which do not provide message boundaries.
+
 ## License
 [MIT](LICENSE) - Nikodem Jaworski - 2018
 

@@ -10,10 +10,10 @@ namespace SoundpadConnector.Tests
     {
         private readonly CancellationTokenSource _timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
 
-        private PipeFixture()
+        private PipeFixture(PipeTransmissionMode mode, int bufferSize)
         {
             var name = "soundpad-connector-tests-" + Guid.NewGuid().ToString("N");
-            Server = new NamedPipeServerStream(name, PipeDirection.InOut, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous);
+            Server = new NamedPipeServerStream(name, PipeDirection.InOut, 1, mode, PipeOptions.Asynchronous, bufferSize, bufferSize);
             Client = new NamedPipeClientStream(".", name, PipeDirection.InOut, PipeOptions.Asynchronous);
         }
 
@@ -21,9 +21,9 @@ namespace SoundpadConnector.Tests
         public NamedPipeClientStream Client { get; }
         public CancellationToken Token => _timeout.Token;
 
-        public static async Task<PipeFixture> ConnectAsync()
+        public static async Task<PipeFixture> ConnectAsync(PipeTransmissionMode mode = PipeTransmissionMode.Byte, int bufferSize = 4096)
         {
-            var fixture = new PipeFixture();
+            var fixture = new PipeFixture(mode, bufferSize);
             try
             {
                 await Task.WhenAll(fixture.Server.WaitForConnectionAsync(fixture.Token), fixture.Client.ConnectAsync(fixture.Token));
