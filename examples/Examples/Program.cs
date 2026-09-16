@@ -1,29 +1,29 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using SoundpadConnector;
 
-namespace Examples {
-    class Program {
-        public static Soundpad Soundpad;
-
-        static void Main(string[] args)
+namespace Examples
+{
+    class Program
+    {
+        static async Task<int> Main(string[] args)
         {
-            Soundpad = new Soundpad();
-            Soundpad.StatusChanged += SoundpadOnStatusChanged;
-
-            // Note that the API is asynchronous. Make sure that Soundpad is connected before executing commands.
-            Soundpad.ConnectAsync();
-
-            Console.ReadLine();
-
-        }
-
-        private static void SoundpadOnStatusChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine(Soundpad.ConnectionStatus);
-
-            if (Soundpad.ConnectionStatus == ConnectionStatus.Connected)
+            using var soundpad = new Soundpad();
+            using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            soundpad.StatusChanged += (_, _) => Console.WriteLine(soundpad.ConnectionStatus);
+            try
             {
-                Soundpad.PlaySound(1);              
+                await soundpad.ConnectAsync().WaitAsync(timeout.Token);
+                var version = await soundpad.GetVersion().WaitAsync(timeout.Token);
+                if (!version.IsSuccessful) throw new InvalidOperationException(version.ErrorMessage);
+                Console.WriteLine("Remote control API version: " + version.Value);
+                return 0;
+            }
+            catch (Exception e)
+            {
+                Console.Error.WriteLine(e.Message);
+                return 1;
             }
         }
     }

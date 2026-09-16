@@ -1,5 +1,8 @@
-- name: Api Documentation
-  href: api/
+- name: Getting started
+  href: ../README.md
+
+- name: API documentation
+  href: ../artifacts/docfx-api/toc.yml
   homepage: api/index.md
 
 - name: View on Github
