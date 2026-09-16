@@ -1,5 +1,9 @@
 # SoundpadConnector .NET
 
+<p align="center">
+   <img src="docfx/images/SoundpadConnectorLogo.png" alt="Logo SoundpadConnector .NET" title="SoundpadConnector .NET" />
+</p>
+
 SoundpadConnector provides a .NET API to control a local [Soundpad](https://www.leppsoft.com/soundpad/) instance.
 
 ## Requirements
@@ -106,6 +110,8 @@ Install the SDK selected by `global.json` (10.0.401 or a newer patch in the same
 The first script restores and audits dependencies, builds both solutions in Release, runs safe tests, and packs `artifacts/SoundpadConnector.1.4.1-dev.nupkg`. Known dependency vulnerabilities fail restore. GitHub Actions verifies pushes/PRs and uploads build artifacts without publishing packages or documentation.
 
 Normal tests do not require Soundpad. Parser and transport tests use unique isolated pipes, bounded waits and disposable connections. Example polling tests do not contact Soundpad.
+
+See [release preparation](https://github.com/medokin/soundpad-connector/blob/master/RELEASE.md) for the proposed `1.4.1` candidate, compatibility checks, known live-test gaps and separately approved publishing procedure. `./verify-release.ps1` prepares and verifies a stable-version candidate without publishing; normal builds still use `1.4.1-dev`.
 
 Live tests are skipped unless `SOUNDPAD_INTEGRATION_TESTS` is exactly `1`. They can launch Soundpad and replace its soundlist. `build.ps1` temporarily disables them even if your environment opts in. Only run them against a session you intend to modify:
 

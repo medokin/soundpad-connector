@@ -28,7 +28,11 @@ try {
             Remove-Item -LiteralPath $target -Recurse -Force
         }
     }
-    Invoke-DotNet docfx docfx/docfx.json --warningsAsErrors
+    Invoke-DotNet docfx docfx.json --warningsAsErrors
+    $guide = Get-Content -LiteralPath artifacts/docs/articles/README.html -Raw
+    if (-not $guide.Contains('src="../images/SoundpadConnectorLogo.png"')) {
+        throw 'README banner is missing from the generated guide'
+    }
 } finally {
     Pop-Location
 }
