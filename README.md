@@ -17,14 +17,14 @@ Target-framework compatibility is not a guarantee that every Windows or Soundpad
 Install the published [NuGet package](https://www.nuget.org/packages/SoundpadConnector):
 
 ```powershell
-dotnet add package SoundpadConnector
+dotnet add package SoundpadConnector --version 1.5.0
 ```
 
-The source contains V4 API calls added for the GitHub v1.4.0 release and subsequent compatibility additions. The latest published NuGet version observed during maintenance was 1.3.1, so the published package and current source are not identical. The unreleased development version is `1.5.0-dev`; building does not publish it.
+Version `1.5.0` includes the V4 API calls introduced in GitHub v1.4.0, subsequent API additions, and maintenance fixes. Older NuGet 1.3.1 does not contain these changes. Building locally does not publish a package.
 
 ## QuickStart
 
-The following examples and lifecycle/parsing guarantees describe current unreleased source (`1.5.0-dev`), not NuGet 1.3.1. Use the local project reference in the examples or install the development package produced by `build.ps1` from `artifacts`. The published 1.3.1 package does not contain these maintenance fixes.
+The following examples and lifecycle/parsing guarantees describe version `1.5.0`. Older packages may behave differently. Repository examples use a local project reference; `build.ps1` also produces the package in `artifacts`.
 
 This .NET 10 example only reads the remote control API version. Start Soundpad first.
 
@@ -109,11 +109,11 @@ Install the SDK selected by `global.json` (10.0.401 or a newer patch in the same
 ./build-docs.ps1
 ```
 
-The first script restores and audits dependencies, builds both solutions in Release, runs safe tests, and packs `artifacts/SoundpadConnector.1.5.0-dev.nupkg`. Known dependency vulnerabilities fail restore. Push/PR CI uploads build artifacts without publishing. NuGet publishing is separate: an approved stable `v1.5.0` GitHub release triggers verification and a protected publishing job. Manual runs of the publishing workflow only verify and never publish. See the release preparation checklist for setup and approval requirements. No workflow deploys documentation.
+The first script restores and audits dependencies, builds both solutions in Release, runs safe tests, and packs `artifacts/SoundpadConnector.1.5.0.nupkg`. Known dependency vulnerabilities fail restore. Push/PR CI uploads build artifacts without publishing. NuGet publishing is separate: an approved stable `v1.5.0` GitHub release triggers verification and a protected publishing job. Manual runs of the publishing workflow only verify and never publish. See the release checklist for setup and approval requirements. No workflow deploys documentation.
 
 Normal tests do not require Soundpad. Parser and transport tests use unique isolated pipes, bounded waits and disposable connections. Example polling tests do not contact Soundpad.
 
-See [release preparation](https://github.com/medokin/soundpad-connector/blob/master/RELEASE.md) for the proposed `1.5.0` candidate, compatibility checks, known live-test gaps and separately approved publishing procedure. `./verify-release.ps1` prepares and verifies a stable-version candidate without publishing; normal builds still use `1.5.0-dev`.
+See the [release checklist](https://github.com/medokin/soundpad-connector/blob/master/RELEASE.md) for version `1.5.0`, compatibility checks, known live-test gaps and the publishing procedure. `./verify-release.ps1` verifies the stable package without publishing; normal builds use the same version.
 
 Live tests are skipped unless `SOUNDPAD_INTEGRATION_TESTS` is exactly `1`. They can launch Soundpad and replace its soundlist. `build.ps1` temporarily disables them even if your environment opts in. Only run them against a session you intend to modify:
 
