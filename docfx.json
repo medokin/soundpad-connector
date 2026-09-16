@@ -1,0 +1,52 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": ["SoundpadConnector/SoundpadConnector.csproj"],
+          "exclude": ["**/bin/**", "**/obj/**"],
+          "src": "src"
+        }
+      ],
+      "dest": "artifacts/docfx-api",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": ["**.yml"],
+        "src": "artifacts/docfx-api",
+        "dest": "api"
+      },
+      {
+        "files": ["articles/**.md", "articles/**/toc.yml", "toc.yml", "*.md", "api/index.md"],
+        "src": "docfx",
+        "dest": "."
+      },
+      {
+        "files": ["README.md"],
+        "src": ".",
+        "dest": "articles"
+      }
+    ],
+    "resource": [
+      {
+        "files": ["images/**"],
+        "src": "docfx",
+        "dest": "."
+      }
+    ],
+    "dest": "artifacts/docs",
+    "globalMetadata": {
+      "_appTitle": "SoundpadConnector",
+      "_appName": "SoundpadConnector",
+      "_appLogoPath": "images/logo.png",
+      "_enableSearch": true
+    },
+    "template": ["default", "modern", "docfx/templates/custom"],
+    "markdownEngineName": "markdig",
+    "disableGitFeatures": false
+  }
+}
