@@ -124,6 +124,51 @@ while(true) {
 You may contribute in several ways like creating new features, fixing bugs, improving documentation and examples
 or translating any document here to your language. Read our [Code of Conduct](CODE_OF_CONDUCT.md).
 
+### Development
+
+Install the .NET SDK selected by `global.json` (10.0.401 or a newer patch in the 10.0.4xx feature band).
+The library remains on .NET Standard 2.0; the test and example projects use .NET 10.
+The repository's `NuGet.Config` uses nuget.org without inheriting machine-specific package feeds.
+
+Run these commands from the repository root:
+
+```powershell
+./build.ps1
+```
+
+This restores both solutions, audits all dependencies, builds Release artifacts, runs safe tests,
+and creates the development NuGet package in `artifacts`. It temporarily disables live tests
+even when integration-test opt-in is set in your environment. Individual commands are:
+
+```powershell
+dotnet build src/SoundpadConnector.sln --configuration Release
+dotnet build examples/Examples.sln --configuration Release
+dotnet test src/SoundpadConnector.sln --configuration Release --no-build
+dotnet list src/SoundpadConnector.sln package --vulnerable --include-transitive
+dotnet pack src/SoundpadConnector/SoundpadConnector.csproj --configuration Release --no-build --output artifacts
+```
+
+Package versions come from the library project file. The current unreleased version is
+`1.4.1-dev`; build and package commands do not publish it. GitHub Actions verifies pushes
+and pull requests and uploads a package artifact. Known dependency vulnerabilities fail restore.
+
+Ordinary test runs execute parser and isolated named-pipe tests without Soundpad installed.
+Real-Soundpad integration tests are skipped unless `SOUNDPAD_INTEGRATION_TESTS` is exactly `1`.
+They can launch Soundpad and replace its soundlist. The example app also plays a sound.
+Only opt in against a Soundpad session you intend to modify:
+
+```powershell
+$env:SOUNDPAD_INTEGRATION_TESTS = '1'
+try {
+    dotnet test src/SoundpadConnector.IntegrationTests/SoundpadConnector.IntegrationTests.csproj --configuration Release
+} finally {
+    Remove-Item Env:SOUNDPAD_INTEGRATION_TESTS
+}
+```
+
+The fake pipe fixture uses unique pipe names, bounded waits, and disposable connections.
+Its response-delivery tests exercise parsers, not the connector's transport framing.
+
 ## License
 [MIT](LICENSE) - Nikodem Jaworski - 2018
 

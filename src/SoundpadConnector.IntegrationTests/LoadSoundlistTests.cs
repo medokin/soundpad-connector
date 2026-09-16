@@ -1,13 +1,12 @@
 ﻿using System.Threading.Tasks;
 using FluentAssertions;
 using SoundpadConnector.CustomApi;
-using Xunit;
 
 namespace SoundpadConnector.IntegrationTests
 {
     public class LoadSoundlistTests
     {
-        [Fact]
+        [SoundpadFact]
         public async Task ShouldFailIfFileDoesNotExist()
         {
             var loadSoundList = new LoadSoundlist();
@@ -17,7 +16,7 @@ namespace SoundpadConnector.IntegrationTests
             result.IsSuccessful.Should().BeFalse();
         }
 
-        [Fact]
+        [SoundpadFact]
         public async Task ShouldLoadSoundList()
         {
             var loadSoundList = new LoadSoundlist();

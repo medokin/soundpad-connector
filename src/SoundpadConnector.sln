@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundpadConnector", "Soundp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundpadConnector.IntegrationTests", "SoundpadConnector.IntegrationTests\SoundpadConnector.IntegrationTests.csproj", "{87DB1E48-E462-4262-B38E-2F2B69299367}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundpadConnector.Tests", "SoundpadConnector.Tests\SoundpadConnector.Tests.csproj", "{A34CEDA8-C746-41D1-A003-4380B0B8A3D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{87DB1E48-E462-4262-B38E-2F2B69299367}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87DB1E48-E462-4262-B38E-2F2B69299367}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87DB1E48-E462-4262-B38E-2F2B69299367}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A34CEDA8-C746-41D1-A003-4380B0B8A3D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A34CEDA8-C746-41D1-A003-4380B0B8A3D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A34CEDA8-C746-41D1-A003-4380B0B8A3D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A34CEDA8-C746-41D1-A003-4380B0B8A3D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

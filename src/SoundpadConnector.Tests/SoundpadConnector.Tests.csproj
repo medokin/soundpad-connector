@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="7.2.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="4.0.0">
@@ -16,13 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SoundpadConnector\SoundpadConnector.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Soundlist.spl">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="../SoundpadConnector/SoundpadConnector.csproj" />
+    <ProjectReference Include="../SoundpadConnector.IntegrationTests/SoundpadConnector.IntegrationTests.csproj" />
   </ItemGroup>
 
 </Project>
