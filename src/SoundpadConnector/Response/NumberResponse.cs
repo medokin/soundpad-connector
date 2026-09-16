@@ -16,6 +16,10 @@
 
             if (long.TryParse(response, out var result)) {
                 Value = result;
+                IsSuccessful = true;
+            } else {
+                ErrorMessage = response;
+                IsSuccessful = false;
             }
         }
     }

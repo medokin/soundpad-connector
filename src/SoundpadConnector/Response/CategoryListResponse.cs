@@ -17,10 +17,12 @@ namespace SoundpadConnector.Response
             {
                 ErrorMessage = response;
                 IsSuccessful = false;
+                return;
             }
             var deserializer = new XmlSerializer(typeof(CategoryList));
-            var resultStream = new MemoryStream(Encoding.UTF8.GetBytes(response));
-            Value = (CategoryList)deserializer.Deserialize(resultStream);
+            using (var resultStream = new MemoryStream(Encoding.UTF8.GetBytes(response))) {
+                Value = (CategoryList)deserializer.Deserialize(resultStream);
+            }
             IsSuccessful = true;
         }
     }

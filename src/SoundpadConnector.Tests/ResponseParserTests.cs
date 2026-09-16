@@ -55,6 +55,7 @@ namespace SoundpadConnector.Tests
 
             response.Parse(text);
 
+            Assert.True(response.IsSuccessful);
             Assert.Equal(expected, response.Value);
         }
 
@@ -63,6 +64,36 @@ namespace SoundpadConnector.Tests
         {
             var response = new NumberResponse();
 
+            response.Parse("R-500: Failed");
+
+            Assert.False(response.IsSuccessful);
+            Assert.Equal("R-500: Failed", response.ErrorMessage);
+        }
+
+        [Theory]
+        [InlineData("not a number")]
+        [InlineData("9223372036854775808")]
+        public void RejectsInvalidNumber(string text)
+        {
+            var response = new NumberResponse();
+
+            response.Parse(text);
+
+            Assert.False(response.IsSuccessful);
+            Assert.Equal(text, response.ErrorMessage);
+        }
+
+        [Fact]
+        public void PreservesSoundlistError() => AssertXmlError(new SoundlistResponse());
+
+        [Fact]
+        public void PreservesCategoryListError() => AssertXmlError(new CategoryListResponse());
+
+        [Fact]
+        public void PreservesCategoryError() => AssertXmlError(new CategoryResponse());
+
+        private static void AssertXmlError<T>(ResponseBase<T> response)
+        {
             response.Parse("R-500: Failed");
 
             Assert.False(response.IsSuccessful);

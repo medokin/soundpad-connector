@@ -26,11 +26,7 @@ namespace SoundpadConnector.CustomApi
             {
                 var process = new Process()
                 {
-                    StartInfo = new ProcessStartInfo()
-                    {
-                        FileName = executablePath,
-                        Arguments = Path.GetFullPath(soundListPath)
-                    }
+                    StartInfo = CreateStartInfo(executablePath, soundListPath)
                 };
 
                 process.Start();
@@ -45,6 +41,15 @@ namespace SoundpadConnector.CustomApi
             return new NoContentResponse()
             {
                 IsSuccessful = true
+            };
+        }
+
+        internal static ProcessStartInfo CreateStartInfo(string executablePath, string soundListPath)
+        {
+            return new ProcessStartInfo
+            {
+                FileName = executablePath,
+                Arguments = "\"" + Path.GetFullPath(soundListPath) + "\""
             };
         }
 
