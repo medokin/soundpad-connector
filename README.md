@@ -135,15 +135,26 @@ Run these commands from the repository root:
 ```powershell
 dotnet build src/SoundpadConnector.sln --configuration Release
 dotnet build examples/Examples.sln --configuration Release
-dotnet test src/SoundpadConnector.sln --configuration Release --no-build --list-tests
+dotnet test src/SoundpadConnector.sln --configuration Release --no-build
 dotnet list src/SoundpadConnector.sln package --vulnerable --include-transitive
 ```
 
-`--list-tests` discovers tests without running them. The existing integration tests require
-a local Soundpad installation, and one launches Soundpad and loads a soundlist.
-Do not run the integration tests or the example app against your working Soundpad session
-unless you intend those effects. Opt-in integration-test handling and safe automated tests
-are planned in [issue #17](https://github.com/medokin/soundpad-connector/issues/17).
+Ordinary test runs execute parser and isolated named-pipe tests without Soundpad installed.
+Real-Soundpad integration tests are skipped unless `SOUNDPAD_INTEGRATION_TESTS` is exactly `1`.
+They can launch Soundpad and replace its soundlist. The example app also plays a sound.
+Only opt in against a Soundpad session you intend to modify:
+
+```powershell
+$env:SOUNDPAD_INTEGRATION_TESTS = '1'
+try {
+    dotnet test src/SoundpadConnector.IntegrationTests/SoundpadConnector.IntegrationTests.csproj --configuration Release
+} finally {
+    Remove-Item Env:SOUNDPAD_INTEGRATION_TESTS
+}
+```
+
+The fake pipe fixture uses unique pipe names, bounded waits, and disposable connections.
+Its response-delivery tests exercise parsers, not the connector's transport framing.
 
 ## License
 [MIT](LICENSE) - Nikodem Jaworski - 2018
