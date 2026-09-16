@@ -1,8 +1,6 @@
 # SoundpadConnector .NET
 
-<p align="center">
-   <img src="https://raw.githubusercontent.com/medokin/soundpad-connector/4a9daae40d3c09dc11830c139ac89bcadd222207/docfx/images/SoundpadConnectorLogo.png" alt="Logo SoundpadConnector .NET" title="SoundpadConnector .NET" />
-</p>
+![Logo SoundpadConnector .NET](https://raw.githubusercontent.com/medokin/soundpad-connector/4a9daae40d3c09dc11830c139ac89bcadd222207/docfx/images/SoundpadConnectorLogo.png)
 
 SoundpadConnector provides a .NET API to control a local [Soundpad](https://www.leppsoft.com/soundpad/) instance.
 
@@ -10,7 +8,7 @@ SoundpadConnector provides a .NET API to control a local [Soundpad](https://www.
 
 The library targets .NET Standard 2.0. Soundpad communication requires Windows named pipes; the soundlist launch helper also uses the Windows registry. Use a supported .NET runtime. Repository examples and tests use .NET 10 on Windows.
 
-Target-framework compatibility is not a guarantee that every Windows or Soundpad version has been tested. Maintenance verification uses isolated Windows pipes, not a real Steam or standalone Soundpad installation. Distribution-specific compatibility in [#12](https://github.com/medokin/soundpad-connector/issues/12) remains unconfirmed.
+Target-framework compatibility is not a guarantee that every Windows or Soundpad version has been tested. Maintenance verification uses isolated Windows pipes and real Steam and standalone trial Soundpad 4.0.35 instances (remote control API 1.1.2). Direct soundlist reads passed on both distributions; the original Stream Deck integration in [#12](https://github.com/medokin/soundpad-connector/issues/12) remains untested.
 
 ## Installation
 
@@ -21,6 +19,8 @@ dotnet add package SoundpadConnector --version 1.5.0
 ```
 
 Version `1.5.0` includes the V4 API calls introduced in GitHub v1.4.0, subsequent API additions, and maintenance fixes. Older NuGet 1.3.1 does not contain these changes. Building locally does not publish a package.
+
+The published 1.5.0 README banner displays raw HTML on NuGet. This repository uses Markdown instead; updating the published README requires a separately approved new package version.
 
 ## QuickStart
 
@@ -94,11 +94,11 @@ A changed count is only an observation, not proof that this specific addition co
 
 ### Large responses and paths
 
-Message-mode pipes are read through their message boundary, preserving large XML and split UTF-8 characters. Byte-mode pipes do not provide response boundaries and retain a single-read limitation. Real Soundpad framing across supported versions is not confirmed; [#13](https://github.com/medokin/soundpad-connector/issues/13) remains open for real-instance confirmation.
+Message-mode pipes are read through their message boundary, preserving large XML and split UTF-8 characters. A real Steam Soundpad 4.0.35 message-mode pipe returned a complete 1,200-entry soundlist (735,757 UTF-8 bytes), including repeated requests and disconnect/reconnect cycles, confirming [#13](https://github.com/medokin/soundpad-connector/issues/13) for that version. Byte-mode pipes do not provide response boundaries and retain a single-read limitation; other versions and distributions are not covered by this native check.
 
-`LoadSoundlist` uses the registered Soundpad executable and a quoted absolute path. It can launch Soundpad and replace its soundlist. Path encoding is covered by safe tests, but real loading in [#10](https://github.com/medokin/soundpad-connector/issues/10) remains unverified.
+`LoadSoundlist` uses the registered Soundpad executable and a quoted absolute path. It can launch Soundpad and replace its soundlist. Safe tests cover path encoding, and real Steam Soundpad 4.0.35 loading confirmed spaced and Unicode paths for [#10](https://github.com/medokin/soundpad-connector/issues/10).
 
-UWP is not part of the test matrix. Previous reports about sandbox support and demo/trial editions are not current compatibility guarantees. Consult the [vendor remote control manual](https://www.leppsoft.com/soundpad/help/manual/tutorial/rc/) for product requirements.
+UWP is not part of the test matrix. Standalone trial 4.0.35 passed read-only connector checks using the vendor-signed executable extracted from its installer, without installing it or testing audio/device setup. This does not establish full trial-edition or Stream Deck compatibility. Consult the [vendor remote control manual](https://www.leppsoft.com/soundpad/help/manual/tutorial/rc/) for product requirements.
 
 ## Development
 
@@ -111,7 +111,7 @@ Install the SDK selected by `global.json` (10.0.401 or a newer patch in the same
 
 The first script restores and audits dependencies, builds both solutions in Release, runs safe tests, and packs `artifacts/SoundpadConnector.1.5.0.nupkg`. Known dependency vulnerabilities fail restore. Push/PR CI uploads build artifacts without publishing. NuGet publishing is separate: an approved stable `v1.5.0` GitHub release triggers verification and a protected publishing job. Manual runs of the publishing workflow only verify and never publish. See the release checklist for setup and approval requirements. No workflow deploys documentation.
 
-Normal tests do not require Soundpad. Parser and transport tests use unique isolated pipes, bounded waits and disposable connections. Example polling tests do not contact Soundpad.
+Normal tests do not require Soundpad. Parser and transport tests use unique isolated pipes, bounded waits and disposable connections. Example polling tests do not contact Soundpad. A README regression test checks the banner with raw HTML disabled, matching NuGet's Markdown rendering boundary.
 
 See the [release checklist](https://github.com/medokin/soundpad-connector/blob/master/RELEASE.md) for version `1.5.0`, compatibility checks, known live-test gaps and the publishing procedure. `./verify-release.ps1` verifies the stable package without publishing; normal builds use the same version.
 
