@@ -30,7 +30,7 @@ try {
     }
     Invoke-DotNet docfx docfx.json --warningsAsErrors
     $guide = Get-Content -LiteralPath artifacts/docs/articles/README.html -Raw
-    if (-not $guide.Contains('src="../images/SoundpadConnectorLogo.png"')) {
+    if (-not $guide.Contains('src="https://raw.githubusercontent.com/medokin/soundpad-connector/4a9daae40d3c09dc11830c139ac89bcadd222207/docfx/images/SoundpadConnectorLogo.png"')) {
         throw 'README banner is missing from the generated guide'
     }
 } finally {

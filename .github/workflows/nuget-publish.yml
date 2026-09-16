@@ -1,0 +1,87 @@
+name: NuGet publishing
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nuget-1.5.0
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Verify NuGet package (manual runs never publish)
+    if: github.event_name == 'workflow_dispatch' || (!github.event.release.prerelease && github.event.release.tag_name == 'v1.5.0')
+    runs-on: windows-latest
+    timeout-minutes: 15
+    env:
+      SOUNDPAD_INTEGRATION_TESTS: '0'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Validate approved release
+        if: github.event_name == 'release'
+        shell: pwsh
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: ./validate-nuget-release.ps1 -Tag $env:RELEASE_TAG
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          global-json-file: global.json
+      - name: Verify candidate
+        shell: pwsh
+        run: ./verify-release.ps1
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: verified-nuget-package
+          path: |
+            artifacts/SoundpadConnector.1.5.0.nupkg
+            artifacts/SoundpadConnector.1.5.0.nupkg.sha256
+          if-no-files-found: error
+
+  publish:
+    name: Publish approved NuGet package
+    needs: verify
+    if: github.event_name == 'release' && !github.event.release.prerelease && github.event.release.tag_name == 'v1.5.0'
+    runs-on: windows-latest
+    timeout-minutes: 10
+    environment: nuget
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6.0.0
+        with:
+          dotnet-version: '10.0.401'
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: verified-nuget-package
+          path: artifacts
+          digest-mismatch: error
+      - name: Validate package checksum
+        shell: pwsh
+        run: |
+          $manifest = (Get-Content -LiteralPath artifacts/SoundpadConnector.1.5.0.nupkg.sha256 -Raw).Trim()
+          if ($manifest -cnotmatch '^[0-9a-f]{64}  SoundpadConnector[.]1[.]5[.]0[.]nupkg$') {
+            throw 'Unexpected package checksum manifest'
+          }
+          $actual = (Get-FileHash -LiteralPath artifacts/SoundpadConnector.1.5.0.nupkg -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -cne $manifest.Substring(0, 64)) { throw 'Package checksum mismatch' }
+      - name: NuGet login
+        uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1
+        id: login
+        with:
+          user: medokin
+      - name: Push the verified package
+        shell: pwsh
+        env:
+          NUGET_API_KEY: ${{ steps.login.outputs.NUGET_API_KEY }}
+        run: |
+          dotnet nuget push artifacts/SoundpadConnector.1.5.0.nupkg --source https://api.nuget.org/v3/index.json
+          if ($LASTEXITCODE -ne 0) { throw 'NuGet push failed' }
