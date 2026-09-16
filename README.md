@@ -124,6 +124,27 @@ while(true) {
 You may contribute in several ways like creating new features, fixing bugs, improving documentation and examples
 or translating any document here to your language. Read our [Code of Conduct](CODE_OF_CONDUCT.md).
 
+### Development
+
+Install the .NET SDK selected by `global.json` (10.0.401 or a newer patch in the 10.0.4xx feature band).
+The library remains on .NET Standard 2.0; the test and example projects use .NET 10.
+The repository's `NuGet.Config` uses nuget.org without inheriting machine-specific package feeds.
+
+Run these commands from the repository root:
+
+```powershell
+dotnet build src/SoundpadConnector.sln --configuration Release
+dotnet build examples/Examples.sln --configuration Release
+dotnet test src/SoundpadConnector.sln --configuration Release --no-build --list-tests
+dotnet list src/SoundpadConnector.sln package --vulnerable --include-transitive
+```
+
+`--list-tests` discovers tests without running them. The existing integration tests require
+a local Soundpad installation, and one launches Soundpad and loads a soundlist.
+Do not run the integration tests or the example app against your working Soundpad session
+unless you intend those effects. Opt-in integration-test handling and safe automated tests
+are planned in [issue #17](https://github.com/medokin/soundpad-connector/issues/17).
+
 ## License
 [MIT](LICENSE) - Nikodem Jaworski - 2018
 
