@@ -16,10 +16,12 @@ namespace SoundpadConnector.Response
             if (response.StartsWith("R")) {
                 ErrorMessage = response;
                 IsSuccessful = false;
+                return;
             }
             var deserializer = new XmlSerializer(typeof(Soundlist));
-            var resultStream = new MemoryStream(Encoding.UTF8.GetBytes(response));
-            Value = (Soundlist)deserializer.Deserialize(resultStream);
+            using (var resultStream = new MemoryStream(Encoding.UTF8.GetBytes(response))) {
+                Value = (Soundlist)deserializer.Deserialize(resultStream);
+            }
             IsSuccessful = true;
         }
     }
