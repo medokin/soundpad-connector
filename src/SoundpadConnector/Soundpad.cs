@@ -1,5 +1,9 @@
 ﻿using System;
 using System.IO.Pipes;
+using System.IO;
+using System.ComponentModel;
+using System.Runtime.InteropServices;
+using Microsoft.Win32.SafeHandles;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,6 +16,7 @@ namespace SoundpadConnector {
     /// </summary>
     public partial class Soundpad : IDisposable {
         private const string PipeName = "sp_remote_control";
+        private const uint MessagePipeType = 4;
 
         private readonly NamedPipeClientStream _pipe;
 
@@ -42,13 +47,16 @@ namespace SoundpadConnector {
         /// </summary>
         public ConnectionStatus ConnectionStatus = ConnectionStatus.Disconnected;
 
-        public Soundpad() {
+        public Soundpad() : this(new NamedPipeClientStream(".", PipeName, PipeDirection.InOut)) {
+        }
+
+        internal Soundpad(NamedPipeClientStream pipe) {
             Connected += OnConnected;
             Disconnected += OnDisconnected;
             Connecting += OnConnecting;
             StatusChanged += OnStatusChanged;
 
-            _pipe = new NamedPipeClientStream(".", PipeName, PipeDirection.InOut);
+            _pipe = pipe;
         }
 
         /// <inheritdoc />
@@ -115,10 +123,20 @@ namespace SoundpadConnector {
 
                 await _pipe.WriteAsync(buffer, 0, buffer.Length);
 
-                var responseBuffer = new byte[_pipe.OutBufferSize];
-                await _pipe.ReadAsync(responseBuffer, 0, responseBuffer.Length);
+                var messageMode = IsMessagePipe();
+                if (messageMode) _pipe.ReadMode = PipeTransmissionMode.Message;
 
-                var responseText = Encoding.UTF8.GetString(responseBuffer).TrimEnd('\0');
+                var responseBuffer = new byte[messageMode ? 4096 : _pipe.OutBufferSize];
+                string responseText;
+                using (var responseBytes = new MemoryStream()) {
+                    do {
+                        var count = await _pipe.ReadAsync(responseBuffer, 0, responseBuffer.Length);
+                        if (count == 0) throw new EndOfStreamException("Soundpad disconnected before returning a response.");
+                        responseBytes.Write(responseBuffer, 0, count);
+                    } while (messageMode && !_pipe.IsMessageComplete);
+
+                    responseText = Encoding.UTF8.GetString(responseBytes.ToArray()).TrimEnd('\0');
+                }
 
                 var response = new TResponse();
                 response.Parse(responseText);
@@ -142,6 +160,17 @@ namespace SoundpadConnector {
                 await Task.Delay(PollingInterval);
             }
         }
+
+        private bool IsMessagePipe() {
+            // NamedPipeClientStream.TransmissionMode can return its cached byte mode instead of the server's type.
+            if (!GetNamedPipeInfo(_pipe.SafePipeHandle, out var flags, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero))
+                throw new IOException("Unable to inspect the Soundpad pipe.", new Win32Exception(Marshal.GetLastWin32Error()));
+
+            return (flags & MessagePipeType) != 0;
+        }
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern bool GetNamedPipeInfo(SafePipeHandle pipe, out uint flags, IntPtr outBufferSize, IntPtr inBufferSize, IntPtr maxInstances);
 
         #region Events
 
