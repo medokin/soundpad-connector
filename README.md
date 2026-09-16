@@ -1,181 +1,138 @@
-<h1 align="center">
-   <img src="docfx/images/SoundpadConnectorLogo.png" alt="Logo SoundpadConnector .NET" title="SoundpadConnector .NET" />
-</h1>
+# SoundpadConnector .NET
 
-<p align="center">
-    SoundpadConnector provides an .NET API to programmatically interact with a local <a href="https://store.steampowered.com/app/629520/Soundpad/">Soundpad</a> instance.
-</p>
-
-## Table of contents
-
-  * [Requirements](#requirements)
-  * [Installation](#installation)
-  * [QuickStart](#quickstart)
-  * [Documentation](#documentation)
-    * [API docs](#api-docs)
-    * [Build the docs](#build-the-docs)
-  * [Examples](#examples)
-  * [Limitations](#limitations)
-  * [Troubleshooting](#troubleshooting)
-  * [Contributing](#contributing)
-  * [License](#license)
-  * [Special thanks](#special-thanks)
+SoundpadConnector provides a .NET API to control a local [Soundpad](https://www.leppsoft.com/soundpad/) instance.
 
 ## Requirements
-This library is build on .NET Standard 2.0. Following plattforms are [supported](https://docs.microsoft.com/en-us/dotnet/standard/net-standard#net-implementation-support):
 
-* .NET Core 2.0 or higher
-* .NET Framework 4.6.1 or higher
+The library targets .NET Standard 2.0. Soundpad communication requires Windows named pipes; the soundlist launch helper also uses the Windows registry. Use a supported .NET runtime. Repository examples and tests use .NET 10 on Windows.
 
+Target-framework compatibility is not a guarantee that every Windows or Soundpad version has been tested. Maintenance verification uses isolated Windows pipes, not a real Steam or standalone Soundpad installation. Distribution-specific compatibility in [#12](https://github.com/medokin/soundpad-connector/issues/12) remains unconfirmed.
 
 ## Installation
-Get the NuGet package [SoundpadConnector](https://www.nuget.org/packages/SoundpadConnector) or install via NuGet console:
-```bash
-PM> Install-Package SoundpadConnector
+
+Install the published [NuGet package](https://www.nuget.org/packages/SoundpadConnector):
+
+```powershell
+dotnet add package SoundpadConnector
 ```
+
+The source contains V4 API calls added for the GitHub v1.4.0 release. The latest published NuGet version observed during maintenance was 1.3.1, so the published package and current source are not identical. The unreleased development version is `1.4.1-dev`; building does not publish it.
 
 ## QuickStart
+
+The following examples and lifecycle/parsing guarantees describe current unreleased source (`1.4.1-dev`), not NuGet 1.3.1. Use the local project reference in the examples or install the development package produced by `build.ps1` from `artifacts`. The published 1.3.1 package does not contain these maintenance fixes.
+
+This .NET 10 example only reads the remote control API version. Start Soundpad first.
+
 ```csharp
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 using SoundpadConnector;
 
-namespace Examples {
-    class Program {
-        public static Soundpad Soundpad;
-
-        static void Main(string[] args)
-        {
-            Soundpad = new Soundpad();
-            Soundpad.StatusChanged += SoundpadOnStatusChanged;
-
-            // Note that the API is asynchronous. Make sure that Soundpad is connected before executing commands.
-            Soundpad.ConnectAsync();
-
-            Console.ReadLine();
-
-        }
-
-        private static void SoundpadOnStatusChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine(Soundpad.ConnectionStatus);
-
-            if (Soundpad.ConnectionStatus == ConnectionStatus.Connected)
-            {
-                Soundpad.PlaySound(1);              
-            }
-        }
-    }
+using var soundpad = new Soundpad();
+using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+try
+{
+    await soundpad.ConnectAsync().WaitAsync(timeout.Token);
+    var version = await soundpad.GetVersion().WaitAsync(timeout.Token);
+    if (!version.IsSuccessful) throw new InvalidOperationException(version.ErrorMessage);
+    Console.WriteLine(version.Value);
 }
-
+catch (Exception e)
+{
+    Console.Error.WriteLine(e.Message);
+}
 ```
 
-## Documentation
+Await connection establishment before sending commands and check `IsSuccessful` before using values. Failed connections throw and report `Disconnected`, not `Connected`. `GetVersion` returns the remote control API version, not the Soundpad product version.
 
-### Api docs
-Read the [Docs](https://medokin.github.io/soundpad-connector/api/index.html) online.
-This is still work-in-progress!
-
-### Build the docs
-1. Install [Chocolatey](https://chocolatey.org/)
-2. Install [Docfx]() via [Chocolatey](https://chocolatey.org/) `choco install docfx -y`
-3. Run `docfx docfx/docfx.json` in project root
-4. Browse the output in `/docs`
+`AutoReconnect` defaults to false. When enabled, connection attempts can keep retrying. `Disconnect` cancels connection/retry/poll work; a later `ConnectAsync` creates a new pipe. `Dispose` ends the connector's lifetime. `WaitAsync` only bounds the caller's wait, not the underlying operation: disconnect or dispose the connector when abandoning a timed-out request, as the example's `using` scope does.
 
 ## Examples
-Browse the [Examples](examples).
 
-## Limitations
-- SoundpadConnector does **not work** with Soundpad's **Demo** version 3 and below.
-- UWP is not supported/tested. The sandbox refuses pipe connections. Users reported that it works from Windows 10 version 2004 and above.
+[Example source](https://github.com/medokin/soundpad-connector/tree/master/examples/Examples) includes the read-only console app and a tested count-polling helper. Running the console app contacts Soundpad but does not play sounds or replace its soundlist:
 
-## Troubleshooting
-### Unexpected result when performing multiple calls?
-Soundpad calls are not transactional. You may get a response before the action happens in Soundpad. For example:
-```csharp
-var countResult = await soundpad.GetSoundFileCount();
-Console.WriteLine(countResult.Value); // 9
-
-await soundpad.AddSound(newSoundPath);
-
-var newCountResult = await soundpad.GetSoundFileCount();
-Console.WriteLine(newCountResult.Value); // 9 again, but we're expecting 10, right?
+```powershell
+dotnet run --project examples/Examples/Examples.csproj --configuration Release
 ```
 
-You can wait a certain amount of time between the calls, but that won't be safe either and makes your app slow.
-Another way is to loop until the value changes:
+## Troubleshooting
+
+### Non-transactional calls
+
+Soundpad can acknowledge an action before its state changes. A count request immediately after `AddSound` may still return the old value. Do not use an unbounded busy loop or treat the unchanged count as success.
+
+Copy the [SoundlistPolling helper](https://github.com/medokin/soundpad-connector/blob/master/examples/Examples/SoundlistPolling.cs) into your application. It checks successful responses, returns when the count differs, delays between requests, and accepts cancellation. For example, with an already connected `soundpad` and a valid `newSoundPath`:
 
 ```csharp
-var countResult = await soundpad.GetSoundFileCount();
-Console.WriteLine(countResult.Value); // 9
-
-await soundpad.AddSound(newSoundPath);
-
-while(true) {
-    var newCountResult = await soundpad.GetSoundFileCount();
-    
-    if(newCountResult.Value == countResult.Value) {
-        Console.WriteLine(newCountResult.Value); // 10
-        break;
-    }
+using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+try
+{
+    var previous = await soundpad.GetSoundFileCount().WaitAsync(timeout.Token);
+    if (!previous.IsSuccessful) throw new InvalidOperationException(previous.ErrorMessage);
+    var added = await soundpad.AddSound(newSoundPath).WaitAsync(timeout.Token);
+    if (!added.IsSuccessful) throw new InvalidOperationException("Soundpad rejected the add request.");
+    var count = await SoundlistPolling.WaitForCountChangeAsync(
+        soundpad.GetSoundFileCount, previous.Value, timeout.Token);
+    Console.WriteLine(count);
+}
+catch (OperationCanceledException)
+{
+    soundpad.Disconnect();
+    throw;
 }
 ```
 
-## Contributing
-You may contribute in several ways like creating new features, fixing bugs, improving documentation and examples
-or translating any document here to your language. Read our [Code of Conduct](CODE_OF_CONDUCT.md).
+A changed count is only an observation, not proof that this specific addition completed if another client changes the soundlist concurrently.
 
-### Development
+### Large responses and paths
 
-Install the .NET SDK selected by `global.json` (10.0.401 or a newer patch in the 10.0.4xx feature band).
-The library remains on .NET Standard 2.0; the test and example projects use .NET 10.
-The repository's `NuGet.Config` uses nuget.org without inheriting machine-specific package feeds.
+Message-mode pipes are read through their message boundary, preserving large XML and split UTF-8 characters. Byte-mode pipes do not provide response boundaries and retain a single-read limitation. Real Soundpad framing across supported versions is not confirmed; [#13](https://github.com/medokin/soundpad-connector/issues/13) remains open for real-instance confirmation.
 
-Run these commands from the repository root:
+`LoadSoundlist` uses the registered Soundpad executable and a quoted absolute path. It can launch Soundpad and replace its soundlist. Path encoding is covered by safe tests, but real loading in [#10](https://github.com/medokin/soundpad-connector/issues/10) remains unverified.
+
+UWP is not part of the test matrix. Previous reports about sandbox support and demo/trial editions are not current compatibility guarantees. Consult the [vendor remote control manual](https://www.leppsoft.com/soundpad/help/manual/tutorial/rc/) for product requirements.
+
+## Development
+
+Install the SDK selected by `global.json` (10.0.401 or a newer patch in the same feature band). `NuGet.Config` uses nuget.org without inheriting machine-specific feeds. From the repository root:
 
 ```powershell
 ./build.ps1
+./build-docs.ps1
 ```
 
-This restores both solutions, audits all dependencies, builds Release artifacts, runs safe tests,
-and creates the development NuGet package in `artifacts`. It temporarily disables live tests
-even when integration-test opt-in is set in your environment. Individual commands are:
+The first script restores and audits dependencies, builds both solutions in Release, runs safe tests, and packs `artifacts/SoundpadConnector.1.4.1-dev.nupkg`. Known dependency vulnerabilities fail restore. GitHub Actions verifies pushes/PRs and uploads build artifacts without publishing packages or documentation.
+
+Normal tests do not require Soundpad. Parser and transport tests use unique isolated pipes, bounded waits and disposable connections. Example polling tests do not contact Soundpad.
+
+Live tests are skipped unless `SOUNDPAD_INTEGRATION_TESTS` is exactly `1`. They can launch Soundpad and replace its soundlist. `build.ps1` temporarily disables them even if your environment opts in. Only run them against a session you intend to modify:
 
 ```powershell
-dotnet build src/SoundpadConnector.sln --configuration Release
-dotnet build examples/Examples.sln --configuration Release
-dotnet test src/SoundpadConnector.sln --configuration Release --no-build
-dotnet list src/SoundpadConnector.sln package --vulnerable --include-transitive
-dotnet pack src/SoundpadConnector/SoundpadConnector.csproj --configuration Release --no-build --output artifacts
-```
-
-Package versions come from the library project file. The current unreleased version is
-`1.4.1-dev`; build and package commands do not publish it. GitHub Actions verifies pushes
-and pull requests and uploads a package artifact. Known dependency vulnerabilities fail restore.
-
-Ordinary test runs execute parser and isolated named-pipe tests without Soundpad installed.
-Real-Soundpad integration tests are skipped unless `SOUNDPAD_INTEGRATION_TESTS` is exactly `1`.
-They can launch Soundpad and replace its soundlist. The example app also plays a sound.
-Only opt in against a Soundpad session you intend to modify:
-
-```powershell
-$env:SOUNDPAD_INTEGRATION_TESTS = '1'
+$previousOptIn = $env:SOUNDPAD_INTEGRATION_TESTS
 try {
+    $env:SOUNDPAD_INTEGRATION_TESTS = '1'
     dotnet test src/SoundpadConnector.IntegrationTests/SoundpadConnector.IntegrationTests.csproj --configuration Release
 } finally {
-    Remove-Item Env:SOUNDPAD_INTEGRATION_TESTS
+    $env:SOUNDPAD_INTEGRATION_TESTS = $previousOptIn
 }
 ```
 
-The fake pipe fixture uses unique pipe names, bounded waits, and disposable connections.
-Its response-delivery tests exercise parsers, not the connector's transport framing.
+### Documentation
 
-Connector transport tests also exercise actual requests over isolated Windows message pipes,
-including large responses, split UTF-8 characters, response separation, and disconnects.
-Message-pipe responses are read to the end of their message, not to connection closure.
-The legacy single-read behavior is retained for byte pipes, which do not provide message boundaries.
+[Online API docs](https://medokin.github.io/soundpad-connector/api/index.html) may lag the current source. `build-docs.ps1` restores pinned local DocFX, regenerates library-only metadata, treats warnings as errors, and recreates the generated `artifacts/docfx-api` and `artifacts/docs` directories. It does not delete documentation sources or publish a site.
 
-## License
-[MIT](LICENSE) - Nikodem Jaworski - 2018
+Preview locally after building:
 
-## Special thanks
-* [Leppsoft](https://leppsoft.com/soundpad/de/) - The Company behind Soundpad
+```powershell
+dotnet docfx serve artifacts/docs --hostname localhost --port 8080
+```
+
+Browse [localhost:8080](http://localhost:8080). The rendered guide comes from this README rather than a separate stale copy.
+
+## Contributing and license
+
+Contributions are welcome. See the [Code of Conduct](https://github.com/medokin/soundpad-connector/blob/master/CODE_OF_CONDUCT.md) and [MIT license](https://github.com/medokin/soundpad-connector/blob/master/LICENSE).
+
+Thanks to [Leppsoft](https://www.leppsoft.com/) for Soundpad and @itsameshaw for investigating large responses in [#15](https://github.com/medokin/soundpad-connector/pull/15).

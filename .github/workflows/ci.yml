@@ -30,8 +30,17 @@ jobs:
       - name: Verify
         shell: pwsh
         run: ./build.ps1
+      - name: Verify documentation
+        shell: pwsh
+        run: ./build-docs.ps1
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: nuget-package
           path: artifacts/*.nupkg
+          if-no-files-found: error
+      - name: Upload documentation
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: documentation
+          path: artifacts/docs
           if-no-files-found: error
