@@ -20,11 +20,11 @@ Install the published [NuGet package](https://www.nuget.org/packages/SoundpadCon
 dotnet add package SoundpadConnector
 ```
 
-The source contains V4 API calls added for the GitHub v1.4.0 release. The latest published NuGet version observed during maintenance was 1.3.1, so the published package and current source are not identical. The unreleased development version is `1.4.1-dev`; building does not publish it.
+The source contains V4 API calls added for the GitHub v1.4.0 release and subsequent compatibility additions. The latest published NuGet version observed during maintenance was 1.3.1, so the published package and current source are not identical. The unreleased development version is `1.5.0-dev`; building does not publish it.
 
 ## QuickStart
 
-The following examples and lifecycle/parsing guarantees describe current unreleased source (`1.4.1-dev`), not NuGet 1.3.1. Use the local project reference in the examples or install the development package produced by `build.ps1` from `artifacts`. The published 1.3.1 package does not contain these maintenance fixes.
+The following examples and lifecycle/parsing guarantees describe current unreleased source (`1.5.0-dev`), not NuGet 1.3.1. Use the local project reference in the examples or install the development package produced by `build.ps1` from `artifacts`. The published 1.3.1 package does not contain these maintenance fixes.
 
 This .NET 10 example only reads the remote control API version. Start Soundpad first.
 
@@ -49,7 +49,9 @@ catch (Exception e)
 }
 ```
 
-Await connection establishment before sending commands and check `IsSuccessful` before using values. Failed connections throw and report `Disconnected`, not `Connected`. `GetVersion` returns the remote control API version, not the Soundpad product version.
+Await connection establishment before sending commands and check `IsSuccessful` before using values. Failed connections throw and report `Disconnected`, not `Connected`. `GetVersion` returns the remote control API version; `GetSoundpadVersion` returns the Soundpad product version.
+
+`Seek(milliseconds)` sets an absolute playback position, unlike relative `Jump`. `PlaySoundFromCategory(categoryIndex, soundIndex, renderLine, captureLine)` uses a one-based position within the category, not a global sound index; category `-1` means the selected category. `GetMainFrameTitleText` uses the vendor's `GetTitleText()` command. Soundlist entries preserve optional `Color` and `Tag` XML attributes as raw strings (null when absent, empty when supplied empty); no color encoding is assumed.
 
 `AutoReconnect` defaults to false. When enabled, connection attempts can keep retrying. `Disconnect` cancels connection/retry/poll work; a later `ConnectAsync` creates a new pipe. `Dispose` ends the connector's lifetime. `WaitAsync` only bounds the caller's wait, not the underlying operation: disconnect or dispose the connector when abandoning a timed-out request, as the example's `using` scope does.
 
@@ -107,11 +109,11 @@ Install the SDK selected by `global.json` (10.0.401 or a newer patch in the same
 ./build-docs.ps1
 ```
 
-The first script restores and audits dependencies, builds both solutions in Release, runs safe tests, and packs `artifacts/SoundpadConnector.1.4.1-dev.nupkg`. Known dependency vulnerabilities fail restore. GitHub Actions verifies pushes/PRs and uploads build artifacts without publishing packages or documentation.
+The first script restores and audits dependencies, builds both solutions in Release, runs safe tests, and packs `artifacts/SoundpadConnector.1.5.0-dev.nupkg`. Known dependency vulnerabilities fail restore. GitHub Actions verifies pushes/PRs and uploads build artifacts without publishing packages or documentation.
 
 Normal tests do not require Soundpad. Parser and transport tests use unique isolated pipes, bounded waits and disposable connections. Example polling tests do not contact Soundpad.
 
-See [release preparation](https://github.com/medokin/soundpad-connector/blob/master/RELEASE.md) for the proposed `1.4.1` candidate, compatibility checks, known live-test gaps and separately approved publishing procedure. `./verify-release.ps1` prepares and verifies a stable-version candidate without publishing; normal builds still use `1.4.1-dev`.
+See [release preparation](https://github.com/medokin/soundpad-connector/blob/master/RELEASE.md) for the proposed `1.5.0` candidate, compatibility checks, known live-test gaps and separately approved publishing procedure. `./verify-release.ps1` prepares and verifies a stable-version candidate without publishing; normal builds still use `1.5.0-dev`.
 
 Live tests are skipped unless `SOUNDPAD_INTEGRATION_TESTS` is exactly `1`. They can launch Soundpad and replace its soundlist. `build.ps1` temporarily disables them even if your environment opts in. Only run them against a session you intend to modify:
 

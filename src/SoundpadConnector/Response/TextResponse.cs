@@ -8,6 +8,12 @@
         /// <inheritdoc />
         public override void Parse(string response)
         {
+            if (System.Text.RegularExpressions.Regex.IsMatch(response, "^R-[0-9]{3}(:|$)"))
+            {
+                IsSuccessful = false;
+                ErrorMessage = response;
+                return;
+            }
             Value = response;
             IsSuccessful = true;
         }

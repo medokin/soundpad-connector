@@ -18,6 +18,13 @@ namespace SoundpadConnector.XML
         [XmlAttribute(AttributeName = "title")]
         public string Title { get; set; }
 
+        /// <summary>Raw color attribute supplied by Soundpad, without interpreting its encoding.</summary>
+        [XmlAttribute(AttributeName = "color")]
+        public string Color { get; set; }
+
+        [XmlAttribute(AttributeName = "tag")]
+        public string Tag { get; set; }
+
         [XmlAttribute(AttributeName = "duration")]
         public string Duration { get; set; }
 

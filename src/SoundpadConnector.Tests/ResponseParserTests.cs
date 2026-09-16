@@ -129,6 +129,8 @@ namespace SoundpadConnector.Tests
         [Theory]
         [InlineData("")]
         [InlineData("Soundpad 4: Grüße 🔊")]
+        [InlineData("R-Artist")]
+        [InlineData("R-5000 sound")]
         public void PreservesText(string text)
         {
             var response = new TextResponse();
@@ -137,6 +139,19 @@ namespace SoundpadConnector.Tests
 
             Assert.True(response.IsSuccessful);
             Assert.Equal(text, response.Value);
+        }
+
+        [Theory]
+        [InlineData("R-404")]
+        [InlineData("R-500: Failed")]
+        public void PreservesTextResponseError(string text)
+        {
+            var response = new TextResponse();
+
+            response.Parse(text);
+
+            Assert.False(response.IsSuccessful);
+            Assert.Equal(text, response.ErrorMessage);
         }
 
         [Fact]
@@ -154,6 +169,22 @@ namespace SoundpadConnector.Tests
             Assert.Equal("Sound", sound.Title);
             Assert.Equal("00:02", sound.Duration);
             Assert.Equal(7, sound.PlayCount);
+        }
+
+        [Theory]
+        [InlineData(" color=\"raw-color\" tag=\"Grüße &amp; 🔊\"", "raw-color", "Grüße & 🔊")]
+        [InlineData(" color=\"\" tag=\"\"", "", "")]
+        [InlineData("", null, null)]
+        public void PreservesOptionalSoundMetadata(string attributes, string color, string tag)
+        {
+            // Synthetic XML tests raw preservation, not the vendor's color encoding.
+            var response = new SoundlistResponse();
+            response.Parse("<Soundlist><Sound index=\"3\"" + attributes + " /></Soundlist>");
+
+            Assert.True(response.IsSuccessful);
+            var sound = Assert.Single(response.Value.Sounds);
+            Assert.Equal(color, sound.Color);
+            Assert.Equal(tag, sound.Tag);
         }
 
         [Fact]
