@@ -4,12 +4,16 @@
   "tools": {
     "microsoft.dotnet.apicompat.tool": {
       "version": "10.0.401",
-      "commands": ["apicompat"],
+      "commands": [
+        "apicompat"
+      ],
       "rollForward": false
     },
     "docfx": {
-      "version": "2.78.5",
-      "commands": ["docfx"],
+      "version": "2.80.1",
+      "commands": [
+        "docfx"
+      ],
       "rollForward": false
     }
   }
