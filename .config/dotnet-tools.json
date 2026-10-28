@@ -3,13 +3,17 @@
   "isRoot": true,
   "tools": {
     "microsoft.dotnet.apicompat.tool": {
-      "version": "10.0.401",
-      "commands": ["apicompat"],
+      "version": "10.0.403",
+      "commands": [
+        "apicompat"
+      ],
       "rollForward": false
     },
     "docfx": {
       "version": "2.78.5",
-      "commands": ["docfx"],
+      "commands": [
+        "docfx"
+      ],
       "rollForward": false
     }
   }
